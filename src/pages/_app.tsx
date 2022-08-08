@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "src/lib/tailwind.css";
 import type { AppProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
 
