@@ -472,6 +472,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@tabler/icons@^1.81.0":
+  version "1.81.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-1.81.0.tgz#f32a9afcaf9c876ad902fb0a531bf5c47d6e2336"
+  integrity sha512-Wgu/DYcbmUPvvsFWfhZ1Yn/hrlz4rrIuGk0+ZuEsr8fZmiZpELBDLPu+u4wftkxoiFEZpf4g63vAoonIiYbEzA==
+
 "@tailwindcss/forms@^0.5.2":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.2.tgz#4ef45f9916dcb37838cbe7fecdcc4ba7a7c2ab59"
