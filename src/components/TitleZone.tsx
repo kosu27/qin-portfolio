@@ -2,7 +2,7 @@ import { Container, Group, Space, Stack, Text, Title } from "@mantine/core";
 import { SocialButton } from "components/SocialButton";
 import { useMediaQuery } from "lib/mantine";
 
-export const TitleZone = () => {
+export const TitleZone: React.FC = () => {
   const isDesktop = useMediaQuery("sm");
   const pX = isDesktop ? 224 : 16;
   const pY = isDesktop ? 85.5 : 53.5;

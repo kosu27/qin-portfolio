@@ -50,7 +50,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const { classes } = useStyles();
   const isDesktop = useMediaQuery("md");

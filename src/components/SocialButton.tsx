@@ -1,7 +1,7 @@
 import { Group } from "@mantine/core";
 import { FaFacebook, FaRss, FaTwitter } from "react-icons/fa";
 
-export const SocialButton = () => {
+export const SocialButton: React.FC = () => {
   return (
     <Group spacing={12}>
       <FaTwitter color="white" size={20} />
