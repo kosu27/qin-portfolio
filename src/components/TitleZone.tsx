@@ -1,4 +1,5 @@
-import { Container, Text, Title } from "@mantine/core";
+import { Container, Group, Space, Stack, Text, Title } from "@mantine/core";
+import { SocialButton } from "components/SocialButton";
 import { useMediaQuery } from "lib/mantine";
 
 export const TitleZone = () => {
@@ -18,9 +19,35 @@ export const TitleZone = () => {
           width: "100%",
         })}
       >
-        <Title>
-          <Text color="white">Kosu IT University</Text>
-        </Title>
+        {isDesktop && (
+          <Group position="apart">
+            <Stack>
+              <Title>
+                <Text color="white" weight="bold" size={isDesktop ? 36 : 28}>
+                  Kosu IT University
+                </Text>
+              </Title>
+              <Text color="white" weight="bold" size={18}>
+                こすのポートフォリオのためのページです
+              </Text>
+            </Stack>
+            <SocialButton />
+          </Group>
+        )}
+        {isDesktop || (
+          <Stack spacing={4}>
+            <Title>
+              <Text color="white" weight="bold" size={isDesktop ? 36 : 28}>
+                Kosu IT University
+              </Text>
+            </Title>
+            <Text color="white" weight="bold" size={18}>
+              こすのポートフォリオのためのページです
+            </Text>
+            <Space h={40} />
+            <SocialButton />
+          </Stack>
+        )}
       </Container>
     </>
   );
