@@ -1,14 +1,8 @@
 import type { NextPage } from "next";
-import { Header } from "components/Header";
-import { TitleZone } from "components/TitleZone";
+import { Layout } from "components/templates/Layout";
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      <Header />
-      <TitleZone />
-    </div>
-  );
+  return <Layout />;
 };
 
 export default Home;
