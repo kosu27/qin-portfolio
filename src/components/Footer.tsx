@@ -17,7 +17,7 @@ export const Footer: React.FC<Props> = ({ height }) => {
   const { classes } = useStyle();
 
   return (
-    <footer className={`w-full px-4 h-[${height}px]`}>
+    <footer className={`w-full px-4 h-[${height}px] mt-auto`}>
       <div className={classes.inside}></div>
       <Center style={{ height: height }}>
         <Text size={8} color="dimmed" weight="bold">

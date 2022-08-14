@@ -3,11 +3,15 @@ import { Header } from "components/Header";
 import { TitleZone } from "components/TitleZone";
 import { Footer } from "components/Footer";
 
-export const Layout: React.FC = () => {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <TitleZone />
+      <main>{children}</main>
       <Footer height={60} />
     </div>
   );
