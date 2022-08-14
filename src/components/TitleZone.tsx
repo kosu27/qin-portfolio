@@ -1,5 +1,5 @@
 import { Container, Text, Title } from "@mantine/core";
-import { useMediaQuery } from "src/lib/mantine";
+import { useMediaQuery } from "lib/mantine";
 
 export const TitleZone = () => {
   const isDesktop = useMediaQuery("sm");

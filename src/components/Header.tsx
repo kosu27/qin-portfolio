@@ -9,8 +9,8 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
-import { useMediaQuery } from "src/lib/mantine";
-import { DarkModeButton } from "src/components/DarkModeButton";
+import { useMediaQuery } from "lib/mantine";
+import { DarkModeButton } from "components/DarkModeButton";
 
 const useStyles = createStyles((theme) => ({
   link: {
