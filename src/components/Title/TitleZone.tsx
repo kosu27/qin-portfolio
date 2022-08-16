@@ -1,5 +1,5 @@
 import { Container, Group, Space, Stack, Text, Title } from "@mantine/core";
-import { SocialButton } from "components/SocialButton";
+import { SocialButton } from "components/Button/SocialButton";
 import { useMediaQuery } from "lib/mantine";
 
 export const TitleZone: React.FC = () => {

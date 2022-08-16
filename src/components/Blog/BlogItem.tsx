@@ -9,8 +9,8 @@ export const BlogItem: React.FC<Props> = ({ blog }) => {
   const theme = useMantineTheme();
 
   return (
-    <Stack spacing={8}>
-      <Text my={0} component="h3" size={20}>
+    <Stack spacing={4}>
+      <Text my={2} component="h3" size={24}>
         {blog.title}
       </Text>
       <Text size={16}>{blog.contents}</Text>
