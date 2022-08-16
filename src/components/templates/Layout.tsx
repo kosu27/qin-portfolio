@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import { Header } from "components/Header";
-import { TitleZone } from "components/TitleZone";
-import { Footer } from "components/Footer";
+import { Header } from "components/Header/Header";
+import { TitleZone } from "components/Title/TitleZone";
+import { Footer } from "components/Footer/Footer";
 
 type Props = {
   children: React.ReactNode;
