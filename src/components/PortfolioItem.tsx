@@ -1,18 +1,22 @@
 import { Image, Stack, Text, useMantineTheme } from "@mantine/core";
+import { FC } from "react";
+import { Portfolio } from "types/Portfolio";
 
-export const PortfolioItem = () => {
+type Props = {
+  portfolio: Portfolio;
+};
+
+export const PortfolioItem: FC<Props> = ({ portfolio }) => {
   const theme = useMantineTheme();
   return (
     <Stack spacing="md" pb={16}>
       <Image src="https://picsum.photos/315/184?grayscale" alt="Portfolio" />
       <Text size={24} weight="bold" mt={8}>
-        IT KINGDOM
+        {portfolio.title}
       </Text>
-      <Text size={16}>
-        当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。
-      </Text>
+      <Text size={16}>{portfolio.description}</Text>
       <Text size={12} weight="bold" color={theme.colors.dark[3]}>
-        2021.10 - 2021.12
+        {portfolio.start_at} - {portfolio.end_at}
       </Text>
     </Stack>
   );

@@ -2,12 +2,17 @@ import { Center, SimpleGrid, Space } from "@mantine/core";
 import { PortfolioItem } from "components/PortfolioItem";
 import { SegmentButton } from "components/SegmentButton";
 import { SegmentTitle } from "components/SegmentTitle";
+import { FC } from "react";
+import { Portfolio } from "types/Portfolio";
 
 type Props = {
   isGeneral: boolean;
+  portfolios: Portfolio[];
 };
 
-export const Portfolio: React.FC<Props> = ({ isGeneral }) => {
+export const Portfolios: FC<Props> = ({ isGeneral, portfolios }) => {
+  const items = isGeneral ? portfolios : portfolios.slice(0, 6);
+
   return (
     <>
       <SegmentTitle>Portfolio</SegmentTitle>
@@ -17,8 +22,8 @@ export const Portfolio: React.FC<Props> = ({ isGeneral }) => {
           { minWidth: 1280, cols: 3, spacing: "lg" },
         ]}
       >
-        {[...Array(6)].map((_, i) => (
-          <PortfolioItem key={i} />
+        {items.map((portfolio) => (
+          <PortfolioItem key={portfolio.id} portfolio={portfolio} />
         ))}
       </SimpleGrid>
       <Space h={28} />
