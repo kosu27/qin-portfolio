@@ -1,4 +1,4 @@
-import { Text } from "@mantine/core";
+import { Divider, Text } from "@mantine/core";
 
 type Props = {
   children: React.ReactNode;
@@ -6,8 +6,11 @@ type Props = {
 
 export const SegmentTitle: React.FC<Props> = ({ children }) => {
   return (
-    <Text size={28} component="h2">
-      {children}
-    </Text>
+    <>
+      <Text size={28} component="h2">
+        {children}
+      </Text>
+      <Divider my="lg" pb={8} />
+    </>
   );
 };

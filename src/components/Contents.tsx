@@ -1,4 +1,4 @@
-import { Container } from "@mantine/core";
+import { Container, Space } from "@mantine/core";
 import { Blogs } from "components/Blogs";
 import { Portfolio } from "components/Portfolio";
 import { useMediaQuery } from "lib/mantine";
@@ -15,11 +15,13 @@ const blogs: Blog[] = Array.from(new Array(10)).map((_, i) => ({
 export const Contents: React.FC = () => {
   const isDesktop = useMediaQuery("sm");
   const pX = isDesktop ? 240 : 16;
+  const space = isDesktop ? 100 : 60;
 
   return (
     <Container mx={0} px={pX} size={99999}>
       <Blogs blogs={blogs} isGeneral={false} />
       <Portfolio isGeneral={false} />
+      <Space h={space} />
     </Container>
   );
 };
