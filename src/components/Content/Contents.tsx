@@ -1,6 +1,6 @@
 import { Container, Space } from "@mantine/core";
-import { Blogs } from "components/Blogs";
-import { Portfolios } from "components/Portfolios";
+import { Blogs } from "components/Blog/Blogs";
+import { Portfolios } from "components/Portfolio/Portfolios";
 import { useMediaQuery } from "lib/mantine";
 import { FC } from "react";
 import { Blog } from "types/Blog";

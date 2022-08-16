@@ -1,7 +1,7 @@
 import { Center, Stack } from "@mantine/core";
-import { BlogItem } from "components/BlogItem";
-import { SegmentButton } from "components/SegmentButton";
-import { SegmentTitle } from "components/SegmentTitle";
+import { BlogItem } from "components/Blog/BlogItem";
+import { SegmentButton } from "components/Button/SegmentButton";
+import { SegmentTitle } from "components/Title/SegmentTitle";
 import { Blog } from "types/Blog";
 
 type Props = {
