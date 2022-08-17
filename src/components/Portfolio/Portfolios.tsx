@@ -4,6 +4,7 @@ import { SegmentButton } from "components/Button/SegmentButton";
 import { SegmentTitle } from "components/Title/SegmentTitle";
 import { FC } from "react";
 import { Portfolio } from "types/Portfolio";
+import { useMediaQuery } from "lib/mantine";
 
 type Props = {
   isGeneral: boolean;
