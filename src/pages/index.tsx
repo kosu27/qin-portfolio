@@ -5,8 +5,7 @@ import { Contents } from "components/Content/Contents";
 
 const Home: NextPage = () => {
   return (
-    <Layout>
-      <TitleZone />
+    <Layout isTitle={true}>
       <Contents />
     </Layout>
   );

@@ -13,7 +13,7 @@ export const GithubRepositories: FC<Props> = ({ repositories }) => {
   const items = repositories.slice(0, 5);
 
   return (
-    <Stack>
+    <Stack spacing={0}>
       <SegmentTitle>Github</SegmentTitle>
       <Stack spacing={20}>
         {items.map((repository) => (

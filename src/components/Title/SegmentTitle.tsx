@@ -7,10 +7,10 @@ type Props = {
 export const SegmentTitle: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <Text size={28} component="h2">
+      <Text size={28} mt={40} mb={0} component="h2">
         {children}
       </Text>
-      <Divider my="lg" pb={8} />
+      <Divider my="md" pb={4} />
     </>
   );
 };
