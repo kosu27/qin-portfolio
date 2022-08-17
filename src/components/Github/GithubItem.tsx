@@ -1,5 +1,5 @@
 import { Group, Stack, Text } from "@mantine/core";
-import { GithubData } from "components/Github/GithubDatas";
+import { GithubData } from "components/Github/GithubData";
 import { FC } from "react";
 import { Github } from "types/Github";
 
