@@ -1,9 +1,11 @@
-import { Container, Space } from "@mantine/core";
+import { Container, SimpleGrid, Space } from "@mantine/core";
 import { Blogs } from "components/Blog/Blogs";
+import { GithubRepositories } from "components/Github/GithubRepositories";
 import { Portfolios } from "components/Portfolio/Portfolios";
 import { useMediaQuery } from "lib/mantine";
 import { FC } from "react";
 import { Blog } from "types/Blog";
+import { Github } from "types/Github";
 import { Portfolio } from "types/Portfolio";
 
 const blogs: Blog[] = Array.from(new Array(10)).map((_, i) => ({
@@ -23,6 +25,28 @@ const portfolios: Portfolio[] = Array.from(new Array(30)).map((_, i) => ({
   end_at: "2021/12/4",
 }));
 
+const GithubDatas: Github[] = Array.from(new Array(30)).map((_, i) => ({
+  id: i + 1,
+  title: "lightsound/nexst-tailwind",
+  description: "Next.js starter template.",
+  star: 117,
+  fork: 18,
+  languages: [
+    {
+      name: "TypeScript",
+      value: 1500,
+    },
+    {
+      name: "JavaScript",
+      value: 1000,
+    },
+    {
+      name: "Other",
+      value: 100,
+    },
+  ],
+}));
+
 export const Contents: FC = () => {
   const isDesktop = useMediaQuery("sm");
   const pX = isDesktop ? 240 : 16;
@@ -33,6 +57,17 @@ export const Contents: FC = () => {
       <Blogs blogs={blogs} isGeneral={false} />
       <Portfolios isGeneral={false} portfolios={portfolios} />
       <Space h={space} />
+      {isDesktop && (
+        <SimpleGrid cols={2} spacing={80}>
+          <GithubRepositories repositories={GithubDatas} />
+        </SimpleGrid>
+      )}
+      {isDesktop || (
+        <>
+          <GithubRepositories repositories={GithubDatas} />
+          <Space h={space} />
+        </>
+      )}
     </Container>
   );
 };
