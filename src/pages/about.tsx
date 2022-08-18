@@ -1,7 +1,6 @@
 import { Container, Space, Stack, Text } from "@mantine/core";
 import { Layout } from "components/templates/Layout";
 import { SegmentTitle } from "components/Title";
-import { useMediaQuery } from "lib/mantine";
 import { NextPage } from "next";
 
 const About: NextPage = () => {
