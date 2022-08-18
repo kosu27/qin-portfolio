@@ -3,7 +3,7 @@ import { TitleZone } from "components/Title/TitleZone";
 import { Footer } from "components/Footer/Footer";
 import { FC } from "react";
 import { useMediaQuery } from "lib/mantine";
-import { Container, Space } from "@mantine/core";
+import { AppShell, Container, Space } from "@mantine/core";
 
 type Props = {
   children: React.ReactNode;
@@ -16,20 +16,20 @@ export const Layout: FC<Props> = ({ children, isTitle = false }) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
-      <main>
-        {isTitle && (
-          <>
-            <TitleZone />
-            <Space h={isDesktop ? 40 : 0} />
-          </>
-        )}
+      <AppShell padding={0} header={<Header />} footer={<Footer height={60} />}>
+        <main>
+          {isTitle && (
+            <>
+              <TitleZone />
+              <Space h={isDesktop ? 40 : 0} />
+            </>
+          )}
 
-        <Container mx={0} px={pX} size={99999}>
-          {children}
-        </Container>
-      </main>
-      <Footer height={60} />
+          <Container mx={0} px={pX} size={99999}>
+            {children}
+          </Container>
+        </main>
+      </AppShell>
     </div>
   );
 };
