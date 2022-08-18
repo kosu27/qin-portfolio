@@ -1,4 +1,4 @@
-import { Language } from "types";
+import { Language } from "types/Language";
 
 export type Languages = { name: Language; value: number }[];
 

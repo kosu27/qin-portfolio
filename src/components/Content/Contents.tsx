@@ -5,7 +5,7 @@ import { Portfolios } from "components/Portfolio/Portfolios";
 import { TwitterTweet } from "components/Twitter/TwitterTweet";
 import { useMediaQuery } from "lib/mantine";
 import { FC } from "react";
-import { Twitter } from "types";
+import { Twitter } from "types/Twitter";
 import { Blog } from "types/Blog";
 import { Github } from "types/Github";
 import { Portfolio } from "types/Portfolio";
