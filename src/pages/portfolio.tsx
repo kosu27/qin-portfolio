@@ -4,7 +4,7 @@ import { GetStaticProps, NextPage } from "next";
 import { Portfolio } from "types";
 
 type Props = {
-  portfolios: Portfolio;
+  portfolios: Portfolio[];
 };
 
 const Portfolio: NextPage<Props> = ({ portfolios }) => {
