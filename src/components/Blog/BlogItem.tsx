@@ -1,11 +1,12 @@
 import { Stack, Text, useMantineTheme } from "@mantine/core";
+import { FC } from "react";
 import { Blog } from "types/Blog";
 
 type Props = {
   blog: Blog;
 };
 
-export const BlogItem: React.FC<Props> = ({ blog }) => {
+export const BlogItem: FC<Props> = ({ blog }) => {
   const theme = useMantineTheme();
 
   return (

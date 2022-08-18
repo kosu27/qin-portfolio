@@ -11,6 +11,7 @@ import NextLink from "next/link";
 import { useDisclosure } from "@mantine/hooks";
 import { useMediaQuery } from "lib/mantine";
 import { DarkModeButton } from "components/Button/DarkModeButton";
+import { FC } from "react";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -50,7 +51,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const Header: React.FC = () => {
+export const Header: FC = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const { classes } = useStyles();
   const isDesktop = useMediaQuery("md");
