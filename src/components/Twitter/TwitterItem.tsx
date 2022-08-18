@@ -8,7 +8,7 @@ type Props = {
 
 export const TwitterItem: FC<Props> = ({ twitter }) => {
   return (
-    <Group spacing={16} align="center" noWrap={true}>
+    <Group spacing={16} align="start" noWrap={true}>
       <Avatar src={twitter.userIcon} radius="lg" />
       <Stack spacing={4}>
         <Group spacing={8}>
