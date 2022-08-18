@@ -1,6 +1,6 @@
 import { Avatar, Group, Stack, Text, useMantineTheme } from "@mantine/core";
 import { FC } from "react";
-import { Twitter } from "types";
+import { Twitter } from "types/Twitter";
 
 type Props = {
   twitter: Twitter;

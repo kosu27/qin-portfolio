@@ -3,7 +3,7 @@ import { SegmentButton } from "components/Button";
 import { SegmentTitle } from "components/Title";
 import { TwitterItem } from "components/Twitter/TwitterItem";
 import { FC } from "react";
-import { Twitter } from "types";
+import { Twitter } from "types/Twitter";
 
 type Props = {
   tweet: Twitter[];

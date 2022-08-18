@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, Space } from "@mantine/core";
+import { SimpleGrid, Space } from "@mantine/core";
 import { Blogs } from "components/Blog/Blogs";
 import { GithubRepositories } from "components/Github/GithubRepositories";
 import { Portfolios } from "components/Portfolio/Portfolios";

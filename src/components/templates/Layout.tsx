@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import { Header } from "components/Header/Header";
 import { TitleZone } from "components/Title/TitleZone";
 import { Footer } from "components/Footer/Footer";
