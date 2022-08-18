@@ -3,7 +3,6 @@ import {
   Text,
   Header as MantineHeader,
   Burger,
-  Paper,
   useMantineTheme,
   Drawer,
   Stack,
@@ -87,7 +86,14 @@ export const Header: FC = () => {
       >
         <Group
           position="apart"
-          className="flex justify-center items-center h-full w-full"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "100%",
+            width: "100%",
+          }}
+          // className="flex justify-between items-center h-full w-full"
           color={theme.white}
         >
           {isDesktop || burger}
