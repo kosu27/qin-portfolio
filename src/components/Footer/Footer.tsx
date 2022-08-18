@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Center, createStyles, Text } from "@mantine/core";
 
 type Props = {
@@ -13,7 +13,7 @@ const useStyle = createStyles((theme) => ({
   },
 }));
 
-export const Footer: React.FC<Props> = ({ height }) => {
+export const Footer: FC<Props> = ({ height }) => {
   const { classes } = useStyle();
 
   return (
