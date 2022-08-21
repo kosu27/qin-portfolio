@@ -17,9 +17,8 @@ export const Footer: FC<Props> = ({ height }) => {
   const { classes } = useStyle();
 
   return (
-    <footer className={`w-full px-4 h-[${height}px] mt-[80px]`}>
-      <div className={classes.inside}></div>
-      <Center style={{ height: height }}>
+    <footer className={`w-full px-4 h-[${height}px] mt-auto`}>
+      <Center className={classes.inside} style={{ height: height }}>
         <Text size={8} color="dimmed" weight="bold">
           © 2022 Kosu IT University
         </Text>
