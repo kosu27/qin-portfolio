@@ -105,7 +105,7 @@ export const Header: FC = () => {
         >
           {isDesktop || burger}
           <NextLink href={"/"} passHref>
-            <Text size={18} weight={700}>
+            <Text size={18} weight={700} style={{ cursor: "pointer" }}>
               Kosu IT University
             </Text>
           </NextLink>
