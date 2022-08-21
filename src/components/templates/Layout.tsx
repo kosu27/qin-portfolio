@@ -15,21 +15,17 @@ export const Layout: FC<Props> = ({ children, isTitle = false }) => {
   const pX = isDesktop ? 240 : 16;
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <AppShell padding={0} header={<Header />} footer={<Footer height={60} />}>
-        <main>
-          {isTitle && (
-            <>
-              <TitleZone />
-              <Space h={isDesktop ? 40 : 0} />
-            </>
-          )}
+    <AppShell padding={0} header={<Header />} footer={<Footer height={60} />}>
+      {isTitle && (
+        <>
+          <TitleZone />
+          <Space h={isDesktop ? 40 : 0} />
+        </>
+      )}
 
-          <Container mx={0} px={pX} size={99999}>
-            {children}
-          </Container>
-        </main>
-      </AppShell>
-    </div>
+      <Container mx={0} px={pX} size={99999}>
+        {children}
+      </Container>
+    </AppShell>
   );
 };
