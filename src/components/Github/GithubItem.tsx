@@ -9,9 +9,8 @@ type Props = {
 };
 
 export const GithubItem: FC<Props> = ({ github }) => {
-  const theme = useMantineTheme();
   return (
-    <Stack spacing={4}>
+    <Stack spacing={8}>
       <Text size={20} weight="bold">
         {github.title}
       </Text>
