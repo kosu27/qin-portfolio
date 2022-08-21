@@ -10,7 +10,12 @@ export const PortfolioItem: FC<Props> = ({ portfolio }) => {
   const theme = useMantineTheme();
   return (
     <Stack spacing="md" pb={16}>
-      <Image src="https://picsum.photos/315/184?grayscale" alt="Portfolio" />
+      <Image
+        src="https://picsum.photos/315/184?grayscale"
+        alt="Portfolio"
+        radius="sm"
+        withPlaceholder
+      />
       <Text size={24} weight="bold" mt={8}>
         {portfolio.title}
       </Text>

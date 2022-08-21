@@ -62,7 +62,6 @@ const tweets: Twitter[] = Array.from(new Array(30)).map((_, i) => ({
 
 export const Contents: FC = () => {
   const isDesktop = useMediaQuery("sm");
-  const pX = isDesktop ? 240 : 16;
   const space = isDesktop ? 60 : 20;
 
   return (
