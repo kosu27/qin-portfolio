@@ -16,7 +16,14 @@ export const TwitterItem: FC<Props> = ({ twitter }) => {
             {twitter.userName}
           </Text>
           <Text>{`@${twitter.userId}・${twitter.createdAt}`}</Text>
-          <Text>{twitter.tweet}</Text>
+          <TypographyStylesProvider>
+            <div
+              dangerouslySetInnerHTML={{
+                __html:
+                  "<p>📣 新サービス「Noway Form」をリリースしました！</p><p>Noway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormsでやっていたことがNotionだけで完結します✌✨</p><p>試しに使っていただけると幸いです😊</p><p><a>https://www.noway-form.com/ja</a></p>",
+              }}
+            />
+          </TypographyStylesProvider>
         </Group>
       </Stack>
     </Group>
