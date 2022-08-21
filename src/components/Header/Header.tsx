@@ -45,7 +45,6 @@ export const Header: FC = () => {
         size={18}
         weight={700}
         style={{ borderRadius: "2px", cursor: "pointer" }}
-        // className="rounded-sm cursor-pointer"
         onClick={() => close()}
       >
         {link.label}
@@ -100,12 +99,11 @@ export const Header: FC = () => {
             height: "100%",
             width: "100%",
           }}
-          // className="flex justify-between items-center h-full w-full"
           color={theme.white}
         >
           {isDesktop || burger}
           <NextLink href={"/"} passHref>
-            <Text size={18} weight={700} style={{ cursor: "pointer" }}>
+            <Text size={18} weight={700} style={{ cursor: "pointer" }} component="a">
               Kosu IT University
             </Text>
           </NextLink>
