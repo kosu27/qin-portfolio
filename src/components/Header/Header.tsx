@@ -42,7 +42,7 @@ export const Header: FC = () => {
   const items = links.map((link) => (
     <NextLink key={link.label} href={link.link}>
       <Text
-        size={18}
+        size="sm"
         weight={700}
         style={{ borderRadius: "2px", cursor: "pointer" }}
         onClick={() => close()}
@@ -76,7 +76,7 @@ export const Header: FC = () => {
           },
         })}
       >
-        <Stack spacing={16} pl={20}>
+        <Stack spacing={16} pl={24}>
           {items}
         </Stack>
       </Drawer>
