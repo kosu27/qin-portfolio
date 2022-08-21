@@ -4,5 +4,5 @@ export type Twitter = {
   userId: string;
   userIcon: string;
   tweet: string;
-  created_at: string;
+  createdAt: string;
 };

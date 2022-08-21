@@ -1,4 +1,4 @@
-import { Avatar, Group, Stack, Text, useMantineTheme } from "@mantine/core";
+import { Avatar, Group, Stack, Text, TypographyStylesProvider } from "@mantine/core";
 import { FC } from "react";
 import { Twitter } from "types/Twitter";
 
@@ -15,7 +15,7 @@ export const TwitterItem: FC<Props> = ({ twitter }) => {
           <Text size={16} weight="bold">
             {twitter.userName}
           </Text>
-          <Text>{`@${twitter.userId}・${twitter.created_at}`}</Text>
+          <Text>{`@${twitter.userId}・${twitter.createdAt}`}</Text>
           <Text>{twitter.tweet}</Text>
         </Group>
       </Stack>

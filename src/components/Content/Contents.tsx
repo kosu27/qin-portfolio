@@ -15,7 +15,7 @@ const blogs: Blog[] = Array.from(new Array(10)).map((_, i) => ({
   title: "This is a header",
   contents:
     "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-  created_at: "2022/7/11",
+  createdAt: "2022/7/11",
 }));
 
 const portfolios: Portfolio[] = Array.from(new Array(30)).map((_, i) => ({
@@ -23,8 +23,8 @@ const portfolios: Portfolio[] = Array.from(new Array(30)).map((_, i) => ({
   title: "IT KINGDOM",
   description:
     "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-  start_at: "2021/10/11",
-  end_at: "2021/12/4",
+  startAt: "2021/10/11",
+  endAt: "2021/12/4",
 }));
 
 const GithubDatas: Github[] = Array.from(new Array(30)).map((_, i) => ({
@@ -57,7 +57,7 @@ const tweets: Twitter[] = Array.from(new Array(30)).map((_, i) => ({
     "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80",
   tweet:
     "📣 新サービス「Noway Form」をリリースしました！\n\nNoway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormsでやっていたことがNotionだけで完結します✌✨\n\n試しに使っていただけると幸いです😊\nhttps://www.noway-form.com/ja",
-  created_at: "2021/10/11",
+  createdAt: "2021/10/11",
 }));
 
 export const Contents: FC = () => {

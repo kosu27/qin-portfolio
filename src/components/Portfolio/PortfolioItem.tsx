@@ -16,7 +16,7 @@ export const PortfolioItem: FC<Props> = ({ portfolio }) => {
       </Text>
       <Text size={16}>{portfolio.description}</Text>
       <Text size={12} weight="bold" color={theme.colors.dark[3]}>
-        {portfolio.start_at} - {portfolio.end_at}
+        {portfolio.startAt} - {portfolio.endAt}
       </Text>
     </Stack>
   );

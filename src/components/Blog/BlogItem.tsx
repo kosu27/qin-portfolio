@@ -16,7 +16,7 @@ export const BlogItem: FC<Props> = ({ blog }) => {
       </Text>
       <Text size={16}>{blog.contents}</Text>
       <Text size={12} color={theme.colors.dark[2]} weight="bold">
-        {blog.created_at}
+        {blog.createdAt}
       </Text>
     </Stack>
   );
