@@ -1,5 +1,6 @@
 import { ColorSwatch, Group, Progress, Stack, Text, useMantineTheme } from "@mantine/core";
 import { GithubData } from "components/Github/GithubData";
+import { GithubLanguage } from "components/Github/GithubLanguage";
 import { FC } from "react";
 import { Github } from "types/Github";
 
@@ -19,43 +20,7 @@ export const GithubItem: FC<Props> = ({ github }) => {
         <GithubData name="star" value={117} />
         <GithubData name="fork" value={18} />
       </Group>
-
-      <Progress
-        sections={[
-          { value: 65.5, color: "#3178C6" },
-          { value: 33.7, color: "#F1E05A" },
-          { value: 0.8, color: "#EDEDED" },
-        ]}
-      />
-      <Group spacing={16}>
-        <Group spacing={6}>
-          <ColorSwatch color="#3178C6" size={6} />
-          <Text size="xs" weight={700}>
-            TypeScript
-          </Text>
-          <Text size="xs" color={theme.colors.dark[2]} weight={700}>
-            {65.5}%
-          </Text>
-        </Group>
-        <Group spacing={6}>
-          <ColorSwatch color="#F1E05A" size={6} />
-          <Text size="xs" weight={700}>
-            JavaScript
-          </Text>
-          <Text size="xs" color={theme.colors.dark[2]} weight={700}>
-            {33.7}%
-          </Text>
-        </Group>
-        <Group spacing={6}>
-          <ColorSwatch color="#EDEDED" size={6} />
-          <Text size="xs" weight={700}>
-            Other
-          </Text>
-          <Text size="xs" color={theme.colors.dark[2]} weight={700}>
-            {0.8}%
-          </Text>
-        </Group>
-      </Group>
+      <GithubLanguage language={github.languages} />
     </Stack>
   );
 };

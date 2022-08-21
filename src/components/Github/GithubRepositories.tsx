@@ -15,7 +15,7 @@ export const GithubRepositories: FC<Props> = ({ repositories }) => {
   return (
     <Stack spacing={0}>
       <SegmentTitle>Github</SegmentTitle>
-      <Stack spacing={20}>
+      <Stack spacing={24}>
         {items.map((repository) => (
           <GithubItem key={repository.id} github={repository} />
         ))}

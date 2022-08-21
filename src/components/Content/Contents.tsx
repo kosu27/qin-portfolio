@@ -67,6 +67,7 @@ export const Contents: FC = () => {
   return (
     <>
       <Blogs blogs={blogs} isGeneral={false} />
+      <Space h={space} />
       <Portfolios isGeneral={false} portfolios={portfolios} />
       <Space h={space} />
       {isDesktop && (
