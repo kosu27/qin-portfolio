@@ -11,7 +11,7 @@ export const BlogItem: FC<Props> = ({ blog }) => {
 
   return (
     <Stack spacing={4}>
-      <Text my={2} component="h3" size={24}>
+      <Text my={0} component="h3" size={24}>
         {blog.title}
       </Text>
       <Text size={16}>{blog.contents}</Text>

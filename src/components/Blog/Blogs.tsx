@@ -15,7 +15,7 @@ export const Blogs: FC<Props> = ({ blogs, isGeneral }) => {
   return (
     <Stack spacing={0}>
       <SegmentTitle>Blog</SegmentTitle>
-      <Stack spacing={20}>
+      <Stack spacing={24}>
         {items.map((blog) => (
           <BlogItem key={blog.id} blog={blog} />
         ))}
