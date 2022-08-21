@@ -2,7 +2,7 @@ import { ContactForm } from "components/Contact/ContactForm";
 import { Layout } from "components/templates/Layout";
 import { NextPage } from "next";
 
-const Contact: NextPage = () => {
+const ContactPage: NextPage = () => {
   return (
     <Layout>
       <ContactForm />
@@ -10,4 +10,4 @@ const Contact: NextPage = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;

@@ -7,7 +7,7 @@ type Props = {
   portfolios: Portfolio[];
 };
 
-const Portfolio: NextPage<Props> = ({ portfolios }) => {
+const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
   return (
     <Layout>
       <Portfolios portfolios={portfolios} isGeneral={true} />
@@ -21,16 +21,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
     title: "IT KINGDOM",
     description:
       "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-    start_at: "2021/10/11",
-    end_at: "2021/12/4",
+    startAt: "2021/10/11",
+    endAt: "2021/12/4",
   }));
 
   return {
     props: {
       portfolios: portfolios,
     },
-    revalidate: 50,
+    revalidate: 60,
   };
 };
 
-export default Portfolio;
+export default PortfolioPage;

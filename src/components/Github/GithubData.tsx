@@ -9,13 +9,14 @@ type Props = {
 
 export const GithubData: FC<Props> = ({ name, value }) => {
   const theme = useMantineTheme();
+  const stroke = 1.5;
   const icon = () => {
     {
       switch (name) {
         case "star":
-          return <IconStar stroke={1.5} size={16} color={theme.colors.dark[2]} />;
+          return <IconStar stroke={stroke} size={16} color={theme.colors.dark[2]} />;
         case "fork":
-          return <IconGitFork stroke={1.5} size={16} color={theme.colors.dark[2]} />;
+          return <IconGitFork stroke={stroke} size={16} color={theme.colors.dark[2]} />;
         default:
           const check: never = name;
       }

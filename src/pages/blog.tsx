@@ -7,7 +7,7 @@ type Props = {
   blogs: Blog[];
 };
 
-const Blog: NextPage<Props> = ({ blogs }) => {
+const BlogPage: NextPage<Props> = ({ blogs }) => {
   return (
     <Layout>
       <Blogs blogs={blogs} isGeneral={true} />
@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     title: "This is a header",
     contents:
       "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-    created_at: "2022/7/11",
+    createdAt: "2022/7/11",
   }));
 
   return {
@@ -32,4 +32,4 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   };
 };
 
-export default Blog;
+export default BlogPage;

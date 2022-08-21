@@ -11,7 +11,7 @@ export const SegmentTitle: FC<Props> = ({ children }) => {
       <Text size={28} mt={40} mb={0} component="h2">
         {children}
       </Text>
-      <Divider my="md" pb={4} />
+      <Divider my="lg" pb={4} />
     </>
   );
 };

@@ -9,7 +9,7 @@ type Props = {
 export const SegmentButton: FC<Props> = ({ display }) => {
   const isDarkMode = useIsDarkMode();
   return (
-    <Button color="dark" radius="xl" size="md" variant={isDarkMode ? "white" : "filled"}>
+    <Button mb={16} color="dark" radius="xl" size="md" variant={isDarkMode ? "white" : "filled"}>
       {display}
     </Button>
   );

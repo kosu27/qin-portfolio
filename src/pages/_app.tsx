@@ -1,19 +1,38 @@
 import "lib/tailwind.css";
 import type { AppProps } from "next/app";
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from "@mantine/core";
-import { useState } from "react";
+import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+    key: "color-scheme",
+    defaultValue: "light",
+    getInitialValueInEffect: true,
+  });
+
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+
+  useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
-        theme={{ colorScheme, primaryColor: "pink" }}
+        theme={{
+          colorScheme,
+          primaryColor: "pink",
+          components: {
+            TypographyStylesProvider: {
+              styles: {
+                root: {
+                  a: { color: "#228BE6" },
+                },
+              },
+            },
+          },
+        }}
       >
         <Component {...pageProps} />
       </MantineProvider>
