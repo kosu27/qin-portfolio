@@ -41,7 +41,13 @@ export const Header: FC = () => {
 
   const items = links.map((link) => (
     <NextLink key={link.label} href={link.link}>
-      <Text size={18} weight={700} className="rounded-sm cursor-pointer" onClick={() => close()}>
+      <Text
+        size={18}
+        weight={700}
+        style={{ borderRadius: "2px", cursor: "pointer" }}
+        // className="rounded-sm cursor-pointer"
+        onClick={() => close()}
+      >
         {link.label}
       </Text>
     </NextLink>
