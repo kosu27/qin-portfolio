@@ -7,7 +7,7 @@ type Props = {
   portfolios: Portfolio[];
 };
 
-const Portfolio: NextPage<Props> = ({ portfolios }) => {
+const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
   return (
     <Layout>
       <Portfolios portfolios={portfolios} isGeneral={true} />
@@ -33,4 +33,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export default Portfolio;
+export default PortfolioPage;
