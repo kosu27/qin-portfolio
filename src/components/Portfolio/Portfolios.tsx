@@ -1,9 +1,10 @@
-import { Center, SimpleGrid, Space } from "@mantine/core";
+import { Center, SimpleGrid, Space, Stack } from "@mantine/core";
 import { PortfolioItem } from "components/Portfolio//PortfolioItem";
 import { SegmentButton } from "components/Button/SegmentButton";
 import { SegmentTitle } from "components/Title/SegmentTitle";
 import { FC } from "react";
 import { Portfolio } from "types/Portfolio";
+import { useMediaQuery } from "lib/mantine";
 
 type Props = {
   isGeneral: boolean;
@@ -11,10 +12,11 @@ type Props = {
 };
 
 export const Portfolios: FC<Props> = ({ isGeneral, portfolios }) => {
+  const isDesktop = useMediaQuery("sm");
   const items = isGeneral ? portfolios : portfolios.slice(0, 6);
 
   return (
-    <>
+    <Stack spacing={0}>
       <SegmentTitle>Portfolio</SegmentTitle>
       <SimpleGrid
         breakpoints={[
@@ -26,12 +28,12 @@ export const Portfolios: FC<Props> = ({ isGeneral, portfolios }) => {
           <PortfolioItem key={portfolio.id} portfolio={portfolio} />
         ))}
       </SimpleGrid>
-      <Space h={28} />
+      <Space h={32} />
       {isGeneral || (
         <Center>
           <SegmentButton display="View All" />
         </Center>
       )}
-    </>
+    </Stack>
   );
 };

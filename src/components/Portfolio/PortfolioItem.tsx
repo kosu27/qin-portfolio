@@ -9,7 +9,7 @@ type Props = {
 export const PortfolioItem: FC<Props> = ({ portfolio }) => {
   const theme = useMantineTheme();
   return (
-    <Stack spacing="md" pb={16}>
+    <Stack spacing={8} pb={16}>
       <Image
         src="https://picsum.photos/315/184?grayscale"
         alt="Portfolio"
