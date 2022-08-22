@@ -1,36 +1,44 @@
+import { Center, Loader, Text } from "@mantine/core";
 import { Portfolios } from "components/Portfolio";
 import { Layout } from "components/templates/Layout";
-import { GetStaticProps, NextPage } from "next";
-import { Portfolio } from "types/Portfolio";
+import { useRequestPortfolio } from "lib/swr/useRequestPortfolio";
+import { NextPage } from "next";
+import InfiniteScroll from "react-infinite-scroller";
 
-type Props = {
-  portfolios: Portfolio[];
-};
+const PortfolioPage: NextPage = () => {
+  const { portfolios, error, isLoadingMore, size, setSize, isReachingEnd } = useRequestPortfolio();
 
-const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
+  const loadMore = () => {
+    if (!isLoadingMore && !isReachingEnd) {
+      setSize(size + 1);
+    }
+  };
+
+  if (error) {
+    return (
+      <Center>
+        <Text color="red">ポートフォリオの取得に失敗しました。</Text>
+      </Center>
+    );
+  }
+
   return (
     <Layout>
-      <Portfolios portfolios={portfolios} isGeneral={true} />
+      <InfiniteScroll
+        pageStart={0}
+        loadMore={loadMore}
+        hasMore={!isReachingEnd}
+        threshold={200}
+        loader={
+          <Center key={"loading"} mt={24}>
+            <Loader />
+          </Center>
+        }
+      >
+        <Portfolios portfolios={portfolios} isGeneral={true} />
+      </InfiniteScroll>
     </Layout>
   );
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const portfolios: Portfolio[] = Array.from(new Array(30)).map((_, i) => ({
-    id: i + 1,
-    title: "IT KINGDOM",
-    description:
-      "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-    startAt: "2021/10/11",
-    endAt: "2021/12/4",
-  }));
-
-  return {
-    props: {
-      portfolios: portfolios,
-    },
-    revalidate: 60,
-  };
 };
 
 export default PortfolioPage;
