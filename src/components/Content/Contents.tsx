@@ -66,9 +66,9 @@ export const Contents: FC = () => {
 
   return (
     <>
-      <Blogs blogs={blogs} isGeneral={false} />
+      <Blogs blogs={blogs} isAll={false} />
       <Space h={space} />
-      <Portfolios isGeneral={false} portfolios={portfolios} />
+      <Portfolios isAll={false} portfolios={portfolios} />
       <Space h={space} />
       {isDesktop && (
         <SimpleGrid cols={2} spacing={80}>

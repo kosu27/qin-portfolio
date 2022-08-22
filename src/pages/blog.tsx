@@ -1,9 +1,9 @@
 import { Center, Loader, Text } from "@mantine/core";
 import { Layout } from "components/templates/Layout";
-import { useRequestBlog } from "lib/swr/useRequestBlog";
 import { NextPage } from "next";
 import InfiniteScroll from "react-infinite-scroller";
 import { Blogs } from "components/Blog";
+import { useRequestBlog } from "lib/swr/useRequestBlog";
 
 const BlogPage: NextPage = () => {
   const { blogs, error, size, setSize, isLoadingMore, isReachingEnd } = useRequestBlog();
@@ -35,7 +35,7 @@ const BlogPage: NextPage = () => {
           </Center>
         }
       >
-        <Blogs blogs={blogs} isGeneral={true} />
+        <Blogs blogs={blogs} isAll={true} />
       </InfiniteScroll>
     </Layout>
   );

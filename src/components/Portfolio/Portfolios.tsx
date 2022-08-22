@@ -7,13 +7,13 @@ import { Portfolio } from "types/Portfolio";
 import { useMediaQuery } from "lib/mantine";
 
 type Props = {
-  isGeneral: boolean;
+  isAll: boolean;
   portfolios: Portfolio[];
 };
 
-export const Portfolios: FC<Props> = ({ isGeneral, portfolios }) => {
+export const Portfolios: FC<Props> = ({ isAll, portfolios }) => {
   const isDesktop = useMediaQuery("sm");
-  const items = isGeneral ? portfolios : portfolios.slice(0, 6);
+  const items = isAll ? portfolios : portfolios.slice(0, 6);
 
   return (
     <Stack spacing={0}>
@@ -29,7 +29,7 @@ export const Portfolios: FC<Props> = ({ isGeneral, portfolios }) => {
         ))}
       </SimpleGrid>
       <Space h={32} />
-      {isGeneral || (
+      {isAll || (
         <Center>
           <SegmentButton display="View All" />
         </Center>

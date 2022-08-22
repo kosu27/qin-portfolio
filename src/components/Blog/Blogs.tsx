@@ -7,11 +7,11 @@ import { Blog } from "types/Blog";
 
 type Props = {
   blogs: Blog[];
-  isGeneral: boolean;
+  isAll: boolean;
 };
 
-export const Blogs: FC<Props> = ({ blogs, isGeneral }) => {
-  const items = isGeneral ? blogs : blogs.slice(0, 5);
+export const Blogs: FC<Props> = ({ blogs, isAll }) => {
+  const items = isAll ? blogs : blogs.slice(0, 5);
   return (
     <Stack spacing={0}>
       <SegmentTitle>Blog</SegmentTitle>
@@ -19,7 +19,7 @@ export const Blogs: FC<Props> = ({ blogs, isGeneral }) => {
         {items.map((blog) => (
           <BlogItem key={blog.id} blog={blog} />
         ))}
-        {isGeneral || (
+        {isAll || (
           <Center mt={24}>
             <SegmentButton display="View All" />
           </Center>
