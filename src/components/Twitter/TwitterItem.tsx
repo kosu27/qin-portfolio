@@ -8,6 +8,7 @@ import {
 } from "@mantine/core";
 import { FC } from "react";
 import { Twitter } from "types/Twitter";
+import { textToHtml } from "utils/textToHtml";
 
 type Props = {
   twitter: Twitter;
@@ -32,8 +33,7 @@ export const TwitterItem: FC<Props> = ({ twitter }) => {
         <TypographyStylesProvider>
           <div
             dangerouslySetInnerHTML={{
-              __html:
-                "<p>📣 新サービス「Noway Form」をリリースしました！</p><p>Noway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormsでやっていたことがNotionだけで完結します✌✨</p><p>試しに使っていただけると幸いです😊</p>< p > <a>https://www.noway-form.com/ja</a></p>",
+              __html: textToHtml(twitter.tweet),
             }}
           />
         </TypographyStylesProvider>
