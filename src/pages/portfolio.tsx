@@ -35,7 +35,7 @@ const PortfolioPage: NextPage = () => {
           </Center>
         }
       >
-        <Portfolios portfolios={portfolios} isGeneral={true} />
+        <Portfolios portfolios={portfolios} isAll={true} />
       </InfiniteScroll>
     </Layout>
   );
