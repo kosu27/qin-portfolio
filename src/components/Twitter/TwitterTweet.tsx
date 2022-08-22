@@ -15,13 +15,13 @@ export const TwitterTweet: FC<Props> = ({ tweet }) => {
   return (
     <Stack spacing={0}>
       <SegmentTitle>Twitter</SegmentTitle>
-      <Stack spacing={60}>
+      <Stack spacing={56}>
         {items.map((tweet) => (
           <TwitterItem key={tweet.id} twitter={tweet} />
         ))}
       </Stack>
       <Space h={40} />
-      <Center>
+      <Center mt={8}>
         <SegmentButton display="View on Twitter" />
       </Center>
     </Stack>

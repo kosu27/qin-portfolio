@@ -4,7 +4,7 @@ import { Contents } from "components/Content/Contents";
 
 const Home: NextPage = () => {
   return (
-    <Layout isTitle={true}>
+    <Layout isTitle>
       <Contents />
     </Layout>
   );
