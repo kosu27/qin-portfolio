@@ -1,5 +1,6 @@
 // https://swr.vercel.app/ja/examples/infinite-loading
 // https://www.ibrahima-ndaw.com/blog/data-fetching-in-nextjs-using-useswr/
+// https://zenn.dev/syu/articles/1aeebcf13172d1
 
 import useSWRInfinite from "swr/infinite";
 import { Blog } from "types/Blog";
