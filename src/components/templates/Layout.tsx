@@ -7,16 +7,16 @@ import { AppShell, Container, Space } from "@mantine/core";
 
 type Props = {
   children: React.ReactNode;
-  isTitle?: boolean;
+  withTitle?: boolean;
 };
 
-export const Layout: FC<Props> = ({ children, isTitle = false }) => {
+export const Layout: FC<Props> = ({ children, withTitle = false }) => {
   const isDesktop = useMediaQuery("sm");
   const pX = isDesktop ? 240 : 16;
 
   return (
     <AppShell padding={0} header={<Header />} footer={<Footer height={60} />}>
-      {isTitle && (
+      {withTitle && (
         <>
           <TitleZone />
           <Space h={isDesktop ? 40 : 0} />
