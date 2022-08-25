@@ -1,11 +1,20 @@
 import { Center, Loader, Text } from "@mantine/core";
 import { Layout } from "components/templates/Layout";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import InfiniteScroll from "react-infinite-scroller";
 import { Blogs } from "components/Blog";
 import { useRequestBlog } from "lib/swr/useRequestBlog";
+import { client } from "lib/microCMS/client";
+import { MicroCMSListResponse } from "microcms-js-sdk";
 
-const BlogPage: NextPage = () => {
+export type BlogType = {
+  title: string;
+  body: string;
+};
+
+export type Props = MicroCMSListResponse<BlogType>;
+
+const BlogPage: NextPage<Props> = (props) => {
   const { blogs, error, size, setSize, isLoadingMore, isReachingEnd } = useRequestBlog();
 
   const loadMore = () => {
@@ -39,6 +48,13 @@ const BlogPage: NextPage = () => {
       </InfiniteScroll>
     </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await client.getList({ endpoint: "blog" });
+  return {
+    props: data,
+  };
 };
 
 export default BlogPage;
