@@ -12,7 +12,7 @@ const BlogId: NextPage<Props> = (props) => {
   return (
     <Container>
       <SegmentTitle>{props.title}</SegmentTitle>
-      <Text>{format(parseISO(props.publishedAt as string), "yyyy.MM.dd")}</Text>
+      <Text component="time">{format(parseISO(props.publishedAt as string), "yyyy.MM.dd")}</Text>
       <Text dangerouslySetInnerHTML={{ __html: props.body }} />
     </Container>
   );
