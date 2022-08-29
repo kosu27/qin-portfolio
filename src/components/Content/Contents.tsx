@@ -26,7 +26,7 @@ const portfolios: Portfolio[] = Array.from(new Array(30)).map((_, i) => ({
   title: "IT KINGDOM",
   description:
     "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-  thumbnail: {
+  image: {
     url: "https://picsum.photos/315/184",
     height: 184,
     width: 314,

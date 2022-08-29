@@ -4,7 +4,7 @@ export type Portfolio = {
   id: string;
   title: string;
   description: string;
-  thumbnail?: Image;
+  image: Image;
   startAt: string;
   endAt: string;
   createdAt: string;
