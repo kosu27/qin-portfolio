@@ -16,9 +16,11 @@ const PortfolioPage: NextPage = () => {
 
   if (error) {
     return (
-      <Center>
-        <Text color="red">ポートフォリオの取得に失敗しました。</Text>
-      </Center>
+      <Layout>
+        <Center>
+          <Text color="red">ポートフォリオの取得に失敗しました。</Text>
+        </Center>
+      </Layout>
     );
   }
 
@@ -35,7 +37,7 @@ const PortfolioPage: NextPage = () => {
           </Center>
         }
       >
-        <Portfolios portfolios={portfolios} isAll={true} />
+        <Portfolios portfolios={portfolios} isAll />
       </InfiniteScroll>
     </Layout>
   );
