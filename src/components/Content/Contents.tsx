@@ -9,6 +9,7 @@ import { Twitter } from "types/Twitter";
 import { Blog } from "types/Blog";
 import { Github } from "types/Github";
 import { Portfolio } from "types/Portfolio";
+import TopPageBlog from "components/Blog/TopPageBlog";
 
 const blogs: Blog[] = Array.from(new Array(10)).map((_, i) => ({
   id: `${i + 1}`,
@@ -68,6 +69,7 @@ export const Contents: FC = () => {
 
   return (
     <>
+      <TopPageBlog />
       <Blogs blogs={blogs} isAll={false} />
       <Space h={space} />
       <Portfolios isAll={false} portfolios={portfolios} />

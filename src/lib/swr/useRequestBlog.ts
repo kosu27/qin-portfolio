@@ -10,7 +10,7 @@ const fetcher = async (pageStr: string) => {
   const page = Number(pageStr);
   const countPage = 10;
   const data = await client.get({
-    endpoint: "blogs",
+    endpoint: "blog",
     queries: { orders: "-publishedAt", limit: countPage, offset: countPage * (page - 1) },
   });
   return data.content;
