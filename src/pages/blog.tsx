@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import { Blogs } from "components/Blog";
 import { useRequestBlog } from "lib/swr/useRequestBlog";
 import { client } from "lib/microCMS/client";
-import { MicroCMSListResponse } from "microcms-js-sdk";
+// import { MicroCMSListResponse } from "microcms-js-sdk";
 import { Blog } from "types/Blog";
 
 type Props = {
