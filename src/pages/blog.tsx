@@ -6,16 +6,21 @@ import { Blogs } from "components/Blog";
 import { useRequestBlog } from "lib/swr/useRequestBlog";
 import { client } from "lib/microCMS/client";
 import { MicroCMSListResponse } from "microcms-js-sdk";
+import { Blog } from "types/Blog";
 
-export type BlogType = {
-  title: string;
-  body: string;
+type Props = {
+  blogs: Blog[];
 };
 
-export type Props = MicroCMSListResponse<BlogType>;
+// export type BlogType = {
+//   title: string;
+//   body: string;
+// };
 
-const BlogPage: NextPage<Props> = (props) => {
-  const { blogs, error, size, setSize, isLoadingMore, isReachingEnd } = useRequestBlog();
+// export type Props = MicroCMSListResponse<BlogType>;
+
+const BlogPage: NextPage<Props> = ({ blogs }) => {
+  const { items, error, size, setSize, isLoadingMore, isReachingEnd } = useRequestBlog(blogs);
 
   const loadMore = () => {
     if (!isLoadingMore && !isReachingEnd) {
@@ -37,23 +42,26 @@ const BlogPage: NextPage<Props> = (props) => {
         pageStart={0}
         loadMore={loadMore}
         hasMore={!isReachingEnd}
-        threshold={500}
+        threshold={100}
         loader={
           <Center key={"loading"} mt={24}>
             <Loader />
           </Center>
         }
       >
-        <Blogs blogs={blogs} isAll={true} />
+        <Blogs blogs={items} isAll={true} />
       </InfiniteScroll>
     </Layout>
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const data = await client.getList({ endpoint: "blog" });
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await client.get({ endpoint: "blog", queries: { orders: "-publishedAt" } });
+  const props: Props = {
+    blogs: data.contents,
+  };
   return {
-    props: data,
+    props: props,
   };
 };
 
