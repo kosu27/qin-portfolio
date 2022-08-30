@@ -12,15 +12,15 @@ import { Portfolio } from "types/Portfolio";
 import { TopPageBlog } from "components/Blog/TopPageBlog";
 import { TopPagePortfolio } from "components/Portfolio";
 
-const blogs: Blog[] = Array.from(new Array(10)).map((_, i) => ({
-  id: `${i + 1}`,
-  title: "This is a header",
-  content:
-    "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-  createdAt: "2022/7/11",
-  updatedAt: "2022/7/11",
-  publishedAt: "2022/7/11",
-}));
+// const blogs: Blog[] = Array.from(new Array(10)).map((_, i) => ({
+//   id: `${i + 1}`,
+//   title: "This is a header",
+//   content:
+//     "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+//   createdAt: "2022/7/11",
+//   updatedAt: "2022/7/11",
+//   publishedAt: "2022/7/11",
+// }));
 
 // const portfolios: Portfolio[] = Array.from(new Array(30)).map((_, i) => ({
 //   id: `${i + 1}`,

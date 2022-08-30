@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Stack, Text, useMantineTheme } from "@mantine/core";
 import { Image } from "components/Image";
+import { dateFormatted } from "lib/dayJs/day";
 import { FC } from "react";
 import { Portfolio } from "types/Portfolio";
 
@@ -19,8 +20,11 @@ export const PortfolioItem: FC<Props> = ({ portfolio }) => {
       <Text size={16} lineClamp={4}>
         {portfolio.description}
       </Text>
-      <Text size={12} weight="bold" color={theme.colors.dark[3]}>
-        {portfolio.startAt} - {portfolio.endAt}
+      <Text size={12} weight="bold" color={theme.colors.dark[2]}>
+        {`${dateFormatted(portfolio.startAt, "YYYY.M")} - ${dateFormatted(
+          portfolio.endAt,
+          "YYYY.M"
+        )}`}
       </Text>
     </Stack>
   );
