@@ -5,19 +5,11 @@ import InfiniteScroll from "react-infinite-scroller";
 import { Blogs } from "components/Blog";
 import { useRequestBlog } from "lib/swr/useRequestBlog";
 import { client } from "lib/microCMS/client";
-// import { MicroCMSListResponse } from "microcms-js-sdk";
 import { Blog } from "types/Blog";
 
 type Props = {
   blogs: Blog[];
 };
-
-// export type BlogType = {
-//   title: string;
-//   body: string;
-// };
-
-// export type Props = MicroCMSListResponse<BlogType>;
 
 const BlogPage: NextPage<Props> = ({ blogs }) => {
   const { items, error, size, setSize, isLoadingMore, isReachingEnd } = useRequestBlog(blogs);
