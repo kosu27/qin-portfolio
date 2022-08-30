@@ -1,12 +1,19 @@
 import { Center, Loader, Text } from "@mantine/core";
 import { Portfolios } from "components/Portfolio";
 import { Layout } from "components/templates/Layout";
+import { client } from "lib/microCMS/client";
 import { useRequestPortfolio } from "lib/swr/useRequestPortfolio";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import InfiniteScroll from "react-infinite-scroller";
+import { Portfolio } from "types/Portfolio";
 
-const PortfolioPage: NextPage = () => {
-  const { portfolios, error, isLoadingMore, size, setSize, isReachingEnd } = useRequestPortfolio();
+type Props = {
+  portfolios: Portfolio[];
+};
+
+const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
+  const { items, error, isLoadingMore, size, setSize, isReachingEnd } =
+    useRequestPortfolio(portfolios);
 
   const loadMore = () => {
     if (!isLoadingMore && !isReachingEnd) {
@@ -30,17 +37,32 @@ const PortfolioPage: NextPage = () => {
         pageStart={0}
         loadMore={loadMore}
         hasMore={!isReachingEnd}
-        threshold={200}
+        threshold={100}
         loader={
           <Center key={"loading"} mt={24}>
             <Loader />
           </Center>
         }
       >
-        <Portfolios portfolios={portfolios} isAll />
+        <Portfolios portfolios={items} isAll />
       </InfiniteScroll>
     </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await client.get({
+    endpoint: "portfolio",
+    queries: { orders: "-publishedAt" },
+  });
+
+  const props: Props = {
+    portfolios: data.contents,
+  };
+
+  return {
+    props: props,
+  };
 };
 
 export default PortfolioPage;
