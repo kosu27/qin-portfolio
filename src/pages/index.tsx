@@ -36,14 +36,19 @@ const Home: NextPage<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.get({
+  const blogData = await client.get({
     endpoint: "blog",
     queries: { orders: "-publishedAt" },
   });
 
+  const portfolioData = await client.get({
+    endpoint: "portfolio",
+    queries: { orders: "-publishedAt" },
+  });
+
   const props: Props = {
-    blogs: data.content,
-    portfolios: [],
+    blogs: blogData.contents,
+    portfolios: portfolioData.contents,
     github: [],
     twitter: [],
   };
