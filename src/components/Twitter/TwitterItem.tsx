@@ -8,7 +8,7 @@ import {
 } from "@mantine/core";
 import { FC } from "react";
 import { Twitter } from "types/Twitter";
-import { textToHtml } from "utils/textToHtml";
+import { textToHtml } from "utils/htmlTransform";
 
 type Props = {
   twitter: Twitter;
