@@ -2,39 +2,32 @@
 // https://www.ibrahima-ndaw.com/blog/data-fetching-in-nextjs-using-useswr/
 // https://zenn.dev/syu/articles/1aeebcf13172d1
 
+import { client } from "lib/microCMS/client";
 import useSWRInfinite from "swr/infinite";
 import { Blog } from "types/Blog";
 
 const fetcher = async (pageStr: string) => {
-  const pageLimit = 5;
   const page = Number(pageStr);
   const countPage = 10;
-  if (page > pageLimit) return [];
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  const blogs: Blog[] = Array.from(new Array(countPage)).map((_, i) => {
-    const id = (page - 1) * countPage + i + 1;
-    return {
-      id: id,
-      title: `${id}. this is a header`,
-      contents:
-        "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-      createdAt: "2022/7/11",
-    };
+  const data = await client.get({
+    endpoint: "blog",
+    queries: { orders: "-publishedAt", limit: countPage, offset: countPage * (page - 1) },
   });
-  return blogs;
+  return data.content;
 };
 
-export const useRequestBlog = () => {
+export const useRequestBlog = (initialData: Blog[]) => {
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
     (index) => `${index + 1}`,
-    fetcher
+    fetcher,
+    { fallbackData: initialData }
   );
 
-  const blogs = data ? ([] as Blog[]).concat(...data) : [];
+  const items = data ? ([] as Blog[]).concat(...data) : [];
   const isLoadingInitialData = !data && !error;
   const isLoadingMore =
     isLoadingInitialData || (size > 0 && data && typeof data[size - 1] === "undefined");
   const isReachingEnd = data?.slice(-1)[0]?.length === 0;
 
-  return { blogs, error, mutate, size, setSize, isValidating, isLoadingMore, isReachingEnd };
+  return { items, error, mutate, size, setSize, isValidating, isLoadingMore, isReachingEnd };
 };
