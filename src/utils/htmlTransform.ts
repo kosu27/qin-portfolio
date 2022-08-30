@@ -7,6 +7,9 @@ export const textToHtml = (text: string): string => {
     urlRegExp,
     '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
   );
-
   return convertedText;
 };
+
+// export const htmlToText = (html: string): string => {
+//   return html.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
+// };
