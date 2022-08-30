@@ -22,9 +22,11 @@ const BlogPage: NextPage<Props> = ({ blogs }) => {
 
   if (error) {
     return (
-      <Center>
-        <Text color="red">ブログ記事の取得に失敗しました</Text>
-      </Center>
+      <Layout>
+        <Center>
+          <Text color="red">ブログ記事の取得に失敗しました</Text>
+        </Center>
+      </Layout>
     );
   }
 
@@ -41,7 +43,7 @@ const BlogPage: NextPage<Props> = ({ blogs }) => {
           </Center>
         }
       >
-        <Blogs blogs={items} isAll={true} />
+        <Blogs blogs={items} isAll />
       </InfiniteScroll>
     </Layout>
   );
