@@ -11,9 +11,7 @@ const blogState = selector({
   },
 });
 
-const TopPageBlog = () => {
+export const TopPageBlog = () => {
   const blogs = useRecoilValue(blogState);
   return <Blogs blogs={blogs} isAll={false} />;
 };
-
-export default TopPageBlog;
