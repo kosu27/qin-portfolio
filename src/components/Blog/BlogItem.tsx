@@ -4,7 +4,7 @@ import { dateFormatted } from "lib/dayJs/day";
 import { FC } from "react";
 import { Blog } from "types/Blog";
 import { pagesPath } from "utils/$path";
-// import { htmlToText } from "utils/htmlTransform";
+import { htmlToText } from "utils/htmlTransform";
 
 type Props = {
   blog: Blog;
@@ -21,7 +21,7 @@ export const BlogItem: FC<Props> = ({ blog }) => {
         </Text>
       </NextLink>
       <Text size={16} lineClamp={3}>
-        {/* {htmlToText(blog.content)} */}
+        {htmlToText(blog.content)}
         {blog.content}
       </Text>
       <Text size={12} color={theme.colors.dark[2]} weight="bold">
