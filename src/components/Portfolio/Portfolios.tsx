@@ -5,6 +5,8 @@ import { SegmentTitle } from "components/Title/SegmentTitle";
 import { FC } from "react";
 import { Portfolio } from "types/Portfolio";
 import { useMediaQuery } from "lib/mantine";
+import { NextLink } from "@mantine/next";
+import { pagesPath } from "utils/$path";
 
 type Props = {
   isAll: boolean;
@@ -30,9 +32,11 @@ export const Portfolios: FC<Props> = ({ isAll, portfolios }) => {
       </SimpleGrid>
       <Space h={32} />
       {isAll || (
-        <Center>
-          <SegmentButton display="View All" />
-        </Center>
+        <NextLink href={pagesPath.portfolio.$url()} passHref>
+          <Center>
+            <SegmentButton display="View All" />
+          </Center>
+        </NextLink>
       )}
     </Stack>
   );
