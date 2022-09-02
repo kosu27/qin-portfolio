@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "run-p dev:*",
+    "build": "pathpida && next build",
+    "dev:next": "next dev",
+    "dev:path": "pathpida --watch",
     "start": "next start",
     "lint": "next lint"
   },
