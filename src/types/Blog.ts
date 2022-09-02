@@ -7,3 +7,10 @@ export type Blog = {
   publishedAt?: string;
   revisedAt?: string;
 };
+
+export type BlogAnswer = {
+  contents: Blog[];
+  totalCount: number;
+  offset: number;
+  limit: number;
+};
