@@ -1,4 +1,4 @@
-import { Center, SimpleGrid, Space, Stack } from "@mantine/core";
+import { Center, Grid, SimpleGrid, Space, Stack } from "@mantine/core";
 import { PortfolioItem } from "components/Portfolio//PortfolioItem";
 import { SegmentButton } from "components/Button/SegmentButton";
 import { SegmentTitle } from "components/Title/SegmentTitle";
@@ -20,16 +20,13 @@ export const Portfolios: FC<Props> = ({ isAll, portfolios }) => {
   return (
     <Stack spacing={0}>
       <SegmentTitle>Portfolio</SegmentTitle>
-      <SimpleGrid
-        breakpoints={[
-          { minWidth: 768, cols: 2, spacing: "md" },
-          { minWidth: 1280, cols: 3, spacing: "lg" },
-        ]}
-      >
+      <Grid gutter={24}>
         {items.map((portfolio) => (
-          <PortfolioItem key={portfolio.id} portfolio={portfolio} />
+          <Grid.Col key={portfolio.id} span={isDesktop ? 4 : 12}>
+            <PortfolioItem portfolio={portfolio} />
+          </Grid.Col>
         ))}
-      </SimpleGrid>
+      </Grid>
       <Space h={32} />
       {isAll || (
         <NextLink href={pagesPath.portfolio.$url()} passHref>
