@@ -14,7 +14,7 @@ const fetcher = async (key: string) => {
     endpoint,
     queries: { orders: "-publishedAt", limit: countPage, offset: countPage * (page - 1) },
   });
-  return data.content;
+  return data.contents;
 };
 
 export const useRequestBlog = (initialData: Blog[]) => {
