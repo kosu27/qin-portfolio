@@ -20,10 +20,11 @@ export const BlogItem: FC<Props> = ({ blog }) => {
           {blog.title}
         </Text>
       </NextLink>
-      <Text size={16} lineClamp={3}>
-        {/* {htmlToText(blog.content)} */}
-        {blog.content}
-      </Text>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `${blog.content}`,
+        }}
+      />
       <Text size={12} color={theme.colors.dark[2]} weight="bold">
         {dateFormatted(blog.publishedAt!, "YYYY/MM/DD")}
       </Text>
