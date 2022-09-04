@@ -1,10 +1,20 @@
 import { Box, Center, Group, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { IconCheck } from "@tabler/icons";
 import { SegmentTitle } from "components/Title";
 import { Button, useIsDarkMode } from "lib/mantine";
-import { FC } from "react";
+import { client } from "lib/microCMS/client";
+import { FC, useState } from "react";
+import { NotificationsProvider, showNotification } from "@mantine/notifications";
+
+type Contact = {
+  email: string;
+  name: string;
+  message: string;
+};
 
 export const ContactForm: FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm({
     initialValues: {
       email: "",
@@ -20,51 +30,77 @@ export const ContactForm: FC = () => {
   });
   const isDark = useIsDarkMode();
 
-  return (
-    <Box>
-      <form onSubmit={form.onSubmit(console.log)}>
-        <Stack spacing={0}>
-          <SegmentTitle>Contact</SegmentTitle>
-          <Stack spacing={24}>
-            <Stack spacing={4}>
-              <TextInput
-                required
-                label="Email"
-                placeholder="Your.gmail.com"
-                {...form.getInputProps("email")}
-              />
-            </Stack>
-            <Stack spacing={4}>
-              <TextInput
-                required
-                label="Name"
-                placeholder="Taro Yamada"
-                {...form.getInputProps("name")}
-              />
-            </Stack>
-            <Stack spacing={4}>
-              <TextInput
-                required
-                label="Your message"
-                placeholder="I want to order your goods"
-                {...form.getInputProps("message")}
-              />
-            </Stack>
+  const submit = async (values: Contact) => {
+    setIsLoading(true);
+    await client.create<Contact>({
+      endpoint: "contact",
+      content: {
+        email: values.email,
+        name: values.name,
+        message: values.message,
+      },
+    });
+    setIsLoading(false);
 
-            <Center>
-              <Button
-                type="submit"
-                color="dark"
-                radius="xl"
-                size="md"
-                variant={isDark ? "white" : "filled"}
-              >
-                Send message
-              </Button>
-            </Center>
+    showNotification({
+      autoClose: 3000,
+      title: "送信に成功しました!",
+      message: "",
+      color: "teal",
+      icon: <IconCheck size={18} />,
+      loading: false,
+    });
+
+    form.reset();
+  };
+
+  return (
+    <NotificationsProvider>
+      <Box>
+        <form onSubmit={form.onSubmit((values) => submit(values))}>
+          <Stack spacing={0}>
+            <SegmentTitle>Contact</SegmentTitle>
+            <Stack spacing={24}>
+              <Stack spacing={4}>
+                <TextInput
+                  required
+                  label="Email"
+                  placeholder="Your.gmail.com"
+                  {...form.getInputProps("email")}
+                />
+              </Stack>
+              <Stack spacing={4}>
+                <TextInput
+                  required
+                  label="Name"
+                  placeholder="Taro Yamada"
+                  {...form.getInputProps("name")}
+                />
+              </Stack>
+              <Stack spacing={4}>
+                <TextInput
+                  required
+                  label="Your message"
+                  placeholder="I want to order your goods"
+                  {...form.getInputProps("message")}
+                />
+              </Stack>
+
+              <Center>
+                <Button
+                  type="submit"
+                  color="dark"
+                  radius="xl"
+                  size="md"
+                  variant={isDark ? "white" : "filled"}
+                >
+                  Send message
+                </Button>
+              </Center>
+            </Stack>
           </Stack>
-        </Stack>
-      </form>
-    </Box>
+        </form>
+      </Box>
+    </NotificationsProvider>
   );
 };
