@@ -86,7 +86,6 @@ export const Header: FC = () => {
         px={pX}
         withBorder={false}
         style={{
-          backgroundColor: opened ? theme.colors.pink[6] : theme.white,
           border: 0,
           zIndex: 1,
         }}
