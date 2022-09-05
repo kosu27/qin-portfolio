@@ -6,11 +6,12 @@ import { client } from "lib/microCMS/client";
 import useSWRInfinite from "swr/infinite";
 import { Portfolio } from "types/Portfolio";
 
-const fetcher = async (pageStr: string) => {
+const fetcher = async (key: string) => {
+  const [endpoint, pageStr] = key.split("/");
   const page = Number(pageStr);
   const countPage = 9;
   const data = await client.get({
-    endpoint: "portfolio",
+    endpoint,
     queries: { orders: "-publishedAt", limit: countPage, offset: countPage * (page - 1) },
   });
   return data.contents;
@@ -18,7 +19,7 @@ const fetcher = async (pageStr: string) => {
 
 export const useRequestPortfolio = (initialData: Portfolio[]) => {
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
-    (index) => `${index + 1}`,
+    (index) => `portfolio/${index + 1}`,
     fetcher,
     { fallbackData: initialData }
   );

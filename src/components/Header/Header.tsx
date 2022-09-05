@@ -12,6 +12,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { useMediaQuery, useText } from "lib/mantine";
 import { DarkModeButton } from "components/Button/DarkModeButton";
 import { FC } from "react";
+import { pagesPath } from "utils/$path";
 
 export const Header: FC = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
@@ -22,19 +23,19 @@ export const Header: FC = () => {
 
   const links = [
     {
-      link: "/about",
+      link: pagesPath.about.$url(),
       label: "About",
     },
     {
-      link: "/blog",
+      link: pagesPath.blog.$url(),
       label: "Blog",
     },
     {
-      link: "/portfolio",
+      link: pagesPath.portfolio.$url(),
       label: "Portfolio",
     },
     {
-      link: "/contact",
+      link: pagesPath.contact.$url(),
       label: "Contact",
     },
   ];
