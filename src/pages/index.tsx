@@ -7,6 +7,8 @@ import { Portfolio } from "types/Portfolio";
 import { Github } from "types/Github";
 import { Twitter } from "types/Twitter";
 import { client } from "lib/microCMS/client";
+import axios from "axios";
+import useSWR from "swr";
 
 type Props = {
   blogs: Blog[];
@@ -15,19 +17,18 @@ type Props = {
   twitter: Twitter[];
 };
 
-export const contentState = atom<Props>({
-  key: "TopContents",
-  default: {
-    blogs: [],
-    portfolios: [],
-    github: [],
-    twitter: [],
-  },
-});
+const twitterFetch = async (url: string): Promise<Twitter[]> => {
+  const res = await axios.get(url);
+  return res.data;
+};
 
 const Home: NextPage<Props> = (props) => {
-  const topContents = useSetRecoilState(contentState);
-  topContents(props);
+  const twitterUserId = process.env.NEXT_PUBLIC_MY_TWITTER_USER_ID;
+  const twitterResult = useSWR(`/api/user-tweets/${twitterUserId}`, twitterFetch, {
+    fallbackData: props.twitter,
+  });
+  const tweets = twitterResult.data ?? [];
+
   return (
     <Layout withTitle>
       <Contents />
