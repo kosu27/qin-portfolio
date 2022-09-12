@@ -1,7 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import { Layout } from "components/templates/Layout";
 import { Contents } from "components/Content/Contents";
-import { atom, useSetRecoilState } from "recoil";
 import { Blog } from "types/Blog";
 import { Portfolio } from "types/Portfolio";
 import { Github } from "types/Github";
@@ -9,11 +8,15 @@ import { Twitter } from "types/Twitter";
 import { client } from "lib/microCMS/client";
 import axios from "axios";
 import useSWR from "swr";
+import { Blogs } from "components/Blog";
+import { Portfolios } from "components/Portfolio";
+import { TwitterTweet } from "components/Twitter";
+import { GithubRepositories } from "components/Github";
 
 type Props = {
   blogs: Blog[];
   portfolios: Portfolio[];
-  github: Github[];
+  repositories: Github[];
   twitter: Twitter[];
 };
 
@@ -31,7 +34,12 @@ const Home: NextPage<Props> = (props) => {
 
   return (
     <Layout withTitle>
-      <Contents />
+      <Contents
+        blogs={<Blogs blogs={props.blogs} isAll={false} />}
+        portfolios={<Portfolios portfolios={props.portfolios} isAll={false} />}
+        tweets={<TwitterTweet tweets={tweets} />}
+        repositories={<GithubRepositories repositories={repositories} />}
+      />
     </Layout>
   );
 };
@@ -50,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
     blogs: blogData.contents,
     portfolios: portfolioData.contents,
-    github: [],
+    repositories: [],
     twitter: [],
   };
 
@@ -61,3 +69,41 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default Home;
+
+const repositories: Github[] = Array.from(new Array(30)).map((_, i) => ({
+  id: i + 1,
+  title: "lightsound/nexst-tailwind",
+  description: "Next.js starter template.",
+  star: 117,
+  fork: 18,
+  languages: [
+    {
+      name: "TypeScript",
+      value: 1500,
+    },
+    {
+      name: "JavaScript",
+      value: 1000,
+    },
+    {
+      name: "Ruby",
+      value: 1200,
+    },
+    {
+      name: "PHP",
+      value: 400,
+    },
+    {
+      name: "Go",
+      value: 100,
+    },
+    {
+      name: "Python",
+      value: 100,
+    },
+    {
+      name: "Other",
+      value: 100,
+    },
+  ],
+}));
