@@ -26,7 +26,7 @@ const twitterFetch = async (url: string): Promise<Twitter[]> => {
 };
 
 const Home: NextPage<Props> = (props) => {
-  const twitterUserId = process.env.NEXT_PUBLIC_MY_TWITTER_USER_ID;
+  const twitterUserId = process.env.MY_TWITTER_USER_ID;
   const twitterResult = useSWR(`/api/user-tweets/${twitterUserId}`, twitterFetch, {
     fallbackData: props.twitter,
   });
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: props,
-    revalidate: 500,
+    revalidate: 600,
   };
 };
 

@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     domains: ["images.microcms-assets.io"],
   },
+  env: {
+    MY_TWITTER_USER_ID: "2158814556",
+  },
 };
 
 module.exports = nextConfig;
