@@ -5,13 +5,13 @@ import { Blog } from "types/Blog";
 import { Portfolio } from "types/Portfolio";
 import { Github } from "types/Github";
 import { Twitter } from "types/Twitter";
-import { client } from "lib/microCMS/client";
 import axios from "axios";
 import useSWR from "swr";
 import { Blogs } from "components/Blog";
 import { Portfolios } from "components/Portfolio";
 import { TwitterTweet } from "components/Twitter";
 import { GithubRepositories } from "components/Github";
+import { microCmsclient } from "lib/microCMS/client";
 
 type Props = {
   blogs: Blog[];
@@ -45,12 +45,12 @@ const Home: NextPage<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const blogData = await client.get({
+  const blogData = await microCmsclient.get({
     endpoint: "blog",
     queries: { orders: "-publishedAt" },
   });
 
-  const portfolioData = await client.get({
+  const portfolioData = await microCmsclient.get({
     endpoint: "portfolio",
     queries: { orders: "-publishedAt" },
   });
@@ -84,22 +84,6 @@ const repositories: Github[] = Array.from(new Array(30)).map((_, i) => ({
     {
       name: "JavaScript",
       value: 1000,
-    },
-    {
-      name: "Ruby",
-      value: 1200,
-    },
-    {
-      name: "PHP",
-      value: 400,
-    },
-    {
-      name: "Go",
-      value: 100,
-    },
-    {
-      name: "Python",
-      value: 100,
     },
     {
       name: "Other",
