@@ -1,5 +1,5 @@
 import { twitterClient } from "lib/twitter/client";
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import { Twitter } from "types/Twitter";
 
 type Error = {
