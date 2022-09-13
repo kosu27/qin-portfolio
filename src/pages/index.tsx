@@ -86,6 +86,22 @@ const repositories: Github[] = Array.from(new Array(30)).map((_, i) => ({
       value: 1000,
     },
     {
+      name: "Ruby",
+      value: 1200,
+    },
+    {
+      name: "PHP",
+      value: 400,
+    },
+    {
+      name: "Go",
+      value: 100,
+    },
+    {
+      name: "Python",
+      value: 100,
+    },
+    {
       name: "Other",
       value: 100,
     },

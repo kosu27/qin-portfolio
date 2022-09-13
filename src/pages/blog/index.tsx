@@ -42,7 +42,7 @@ const BlogIndex: NextPage<Props> = ({ blogs }) => {
           </Center>
         }
       >
-        <Blogs blogs={items} isAll />
+        <Blogs blogs={items} isAll={true} />
       </InfiniteScroll>
     </Layout>
   );
