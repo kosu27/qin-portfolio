@@ -12,6 +12,6 @@ export const textToHtml = (text: string): string => {
   return convertedText;
 };
 
-// export const htmlToText = (html: string): string => {
-//   return html.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
-// };
+export const htmlToText = (html: string): string => {
+  return html.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
+};
