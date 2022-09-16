@@ -1,4 +1,4 @@
-import { Center, Grid, SimpleGrid, Space, Stack } from "@mantine/core";
+import { Center, Grid, Space, Stack } from "@mantine/core";
 import { PortfolioItem } from "components/Portfolio//PortfolioItem";
 import { SegmentButton } from "components/Button/SegmentButton";
 import { SegmentTitle } from "components/Title/SegmentTitle";

@@ -1,4 +1,4 @@
-import { Box, Center, Group, Stack, TextInput } from "@mantine/core";
+import { Box, Center, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconCheck } from "@tabler/icons";
 import { SegmentTitle } from "components/Title";

@@ -1,4 +1,4 @@
-import { ColorSwatch, Group, Progress, Stack, Text, useMantineTheme } from "@mantine/core";
+import { Group, Stack, Text } from "@mantine/core";
 import { GithubData } from "components/Github/GithubData";
 import { GithubLanguage } from "components/Github/GithubLanguage";
 import { FC } from "react";
