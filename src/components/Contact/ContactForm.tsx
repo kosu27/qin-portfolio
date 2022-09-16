@@ -3,7 +3,7 @@ import { useForm } from "@mantine/form";
 import { IconCheck } from "@tabler/icons";
 import { SegmentTitle } from "components/Title";
 import { Button, useIsDarkMode } from "lib/mantine";
-import { microCmsclient } from "lib/microCMS/client";
+import { microCMSClient } from "lib/microCMS/client";
 import { FC, useState } from "react";
 import { NotificationsProvider, showNotification } from "@mantine/notifications";
 
@@ -32,7 +32,7 @@ export const ContactForm: FC = () => {
 
   const submit = async (values: Contact) => {
     setIsLoading(true);
-    await microCmsclient.create<Contact>({
+    await microCMSClient.create<Contact>({
       endpoint: "contact",
       content: {
         email: values.email,

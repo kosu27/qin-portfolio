@@ -1,6 +1,6 @@
 import { BlogDisplay } from "components/Blog";
 import { Layout } from "components/templates/Layout";
-import { microCmsclient } from "lib/microCMS/client";
+import { microCMSClient } from "lib/microCMS/client";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Blog, BlogAnswer } from "types/Blog";
 
@@ -21,7 +21,7 @@ const BlogDetailPage: NextPage<Props> = ({ blog }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<Path> = async () => {
-  const data: BlogAnswer = await microCmsclient.get({
+  const data: BlogAnswer = await microCMSClient.get({
     endpoint: "blog",
   });
   const blogs = data.contents;
@@ -38,7 +38,7 @@ export const getStaticPaths: GetStaticPaths<Path> = async () => {
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const id = ctx.params?.id as string;
   try {
-    const blog: Blog = await microCmsclient.get({
+    const blog: Blog = await microCMSClient.get({
       endpoint: "blog",
       contentId: id,
     });

@@ -11,7 +11,7 @@ import { Blogs } from "components/Blog";
 import { Portfolios } from "components/Portfolio";
 import { TwitterTweet } from "components/Twitter";
 import { GithubRepositories } from "components/Github";
-import { microCmsclient } from "lib/microCMS/client";
+import { microCMSClient } from "lib/microCMS/client";
 
 type Props = {
   blogs: Blog[];
@@ -45,12 +45,12 @@ const Home: NextPage<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const blogData = await microCmsclient.get({
+  const blogData = await microCMSClient.get({
     endpoint: "blog",
     queries: { orders: "-publishedAt" },
   });
 
-  const portfolioData = await microCmsclient.get({
+  const portfolioData = await microCMSClient.get({
     endpoint: "portfolio",
     queries: { orders: "-publishedAt" },
   });
