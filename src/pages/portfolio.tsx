@@ -1,7 +1,7 @@
 import { Center, Loader, Text } from "@mantine/core";
 import { Portfolios } from "components/Portfolio";
 import { Layout } from "components/templates/Layout";
-import { microCmsclient } from "lib/microCMS/client";
+import { microCMSClient } from "lib/microCMS/client";
 import { useRequestPortfolio } from "lib/swr/useRequestPortfolio";
 import { GetStaticProps, NextPage } from "next";
 import InfiniteScroll from "react-infinite-scroller";
@@ -51,7 +51,7 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const data = await microCmsclient.get({
+  const data = await microCMSClient.get({
     endpoint: "portfolio",
     queries: { orders: "-publishedAt" },
   });

@@ -2,7 +2,7 @@
 // https://www.ibrahima-ndaw.com/blog/data-fetching-in-nextjs-using-useswr/
 // https://zenn.dev/syu/articles/1aeebcf13172d1
 
-import { microCmsclient } from "lib/microCMS/client";
+import { microCMSClient } from "lib/microCMS/client";
 import useSWRInfinite from "swr/infinite";
 import { Portfolio } from "types/Portfolio";
 
@@ -10,7 +10,7 @@ const fetcher = async (key: string) => {
   const [endpoint, pageStr] = key.split("/");
   const page = Number(pageStr);
   const countPage = 9;
-  const data = await microCmsclient.get({
+  const data = await microCMSClient.get({
     endpoint,
     queries: { orders: "-publishedAt", limit: countPage, offset: countPage * (page - 1) },
   });
