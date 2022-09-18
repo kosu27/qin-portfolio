@@ -1,7 +1,7 @@
 import { Center, Loader, Text } from "@mantine/core";
 import { Blogs } from "components/Blog";
 import { Layout } from "components/templates/Layout";
-import { microCmsclient } from "lib/microCMS/client";
+import { microCMSClient } from "lib/microCMS/client";
 import { useRequestBlog } from "lib/swr/useRequestBlog";
 import { GetStaticProps, NextPage } from "next";
 import InfiniteScroll from "react-infinite-scroller";
@@ -49,7 +49,7 @@ const BlogIndex: NextPage<Props> = ({ blogs }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await microCmsclient.get({
+  const data = await microCMSClient.get({
     endpoint: "blog",
     queries: { orders: "-publishedAt" },
   });

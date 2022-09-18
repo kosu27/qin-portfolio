@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Avatar,
   Group,
   Stack,
@@ -7,7 +8,6 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { dateFormatted } from "lib/dayJs/day";
-import Link from "next/link";
 import { FC } from "react";
 import { Twitter } from "types/Twitter";
 import { textToHtml } from "utils/htmlTransform";
@@ -27,7 +27,7 @@ export const TwitterItem: FC<Props> = ({ twitter }) => {
   const link = `https://twitter.com/${twitter.userId}/status/${twitter.id}`;
 
   return (
-    <Link href={link} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
+    <Anchor href={link} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
       <Group spacing={16} align="start" noWrap={true} py={16} pr={16}>
         <Avatar src={twitter.userIcon} radius="xl" />
         <Stack spacing={4}>
@@ -46,6 +46,6 @@ export const TwitterItem: FC<Props> = ({ twitter }) => {
           </TypographyStylesProvider>
         </Stack>
       </Group>
-    </Link>
+    </Anchor>
   );
 };

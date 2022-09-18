@@ -1,4 +1,4 @@
-import { Container, Group, Space, Stack, Text, Title } from "@mantine/core";
+import { Container, Group, Space, Stack } from "@mantine/core";
 import { SocialButton } from "components/Button/SocialButton";
 import { TitleDescription } from "components/Title/TitleDescription";
 import { TitleText } from "components/Title/TitleText";
