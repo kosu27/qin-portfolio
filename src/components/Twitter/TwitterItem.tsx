@@ -8,6 +8,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { dateFormatted } from "lib/dayJs/day";
+import { useText } from "lib/mantine";
 import { FC } from "react";
 import { Twitter } from "types/Twitter";
 import { textToHtml } from "utils/htmlTransform";
@@ -18,6 +19,7 @@ type Props = {
 
 export const TwitterItem: FC<Props> = ({ twitter }) => {
   const theme = useMantineTheme();
+  const textColor = useText();
   const tweetYear = Number(dateFormatted(twitter.createdAt, "YYYY"));
   const currentYear = new Date().getFullYear();
   const tweetDate =
@@ -32,7 +34,7 @@ export const TwitterItem: FC<Props> = ({ twitter }) => {
         <Avatar src={twitter.userIcon} radius="xl" />
         <Stack spacing={4}>
           <Group spacing={8}>
-            <Text size={16} weight="bold" color={theme.black}>
+            <Text size={16} weight="bold" color={textColor}>
               {twitter.userName}
             </Text>
             <Text
