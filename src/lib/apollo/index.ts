@@ -7,7 +7,7 @@ export const apolloClient = new ApolloClient({
 });
 
 export const fetchRepositories = async () => {
-  const query = gql`
+  const searchQuery = gql`
       query {
         viewer {
           repositories(first: 10, orderBy: { field: PUSHED_AT, direction: DESC }) {
@@ -38,6 +38,6 @@ export const fetchRepositories = async () => {
         }
       }
     `;
-  const result = await apolloClient.query({ query: query });
+  const result = await apolloClient.query({ query: searchQuery });
   const data = result.data;
 };
