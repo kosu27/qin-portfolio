@@ -1,22 +1,28 @@
 import { Group, Progress, Space, Stack, Text, useMantineTheme } from "@mantine/core";
-import { languageColors } from "lib/github/languageColors";
+import { useText } from "lib/mantine";
 import { FC } from "react";
-import { Languages } from "types/Github";
+import { Language, Repository } from "types/Repository";
 
 type Props = {
-  language: Languages;
+  languages: Language[];
+  repository: Repository;
 };
 
-export const GithubLanguage: FC<Props> = ({ language }) => {
-  const theme = useMantineTheme();
-  const total = language
-    .map((languages) => languages.value)
-    .reduce((sum, element) => sum + element, 0);
-  const languageParams = language.map((languages) => {
-    const percent = Math.floor((languages.value / total) * 1000) / 10;
-    const color = languageColors[languages.name];
+type LanguageParams = {
+  name: string;
+  value: number;
+  color: string;
+};
 
-    return { name: languages.name, value: percent, color: color };
+export const GithubLanguage: FC<Props> = ({ languages, repository }) => {
+  const theme = useMantineTheme();
+  const textColor = useText();
+  const total = repository.totalSize;
+  const languageParams: LanguageParams[] = languages.map((language: Language) => {
+    const percent = Math.floor((language.size / total) * 1000) / 10;
+    const color = language.color;
+
+    return { name: language.name, value: percent, color: color };
   });
 
   return (
@@ -39,7 +45,7 @@ export const GithubLanguage: FC<Props> = ({ language }) => {
                   backgroundColor: language.color,
                 }}
               />
-              <Text size={12} weight="bold">
+              <Text size={12} weight="bold" color={textColor}>
                 {language.name}
               </Text>
               <Text size={12} weight="bold" color={theme.colors.dark[2]}>
