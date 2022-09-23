@@ -26023,7 +26023,7 @@ export type GetRepositoryLanguagesQueryVariables = Exact<{
 }>;
 
 
-export type GetRepositoryLanguagesQuery = { __typename?: 'Query', viewer: { __typename?: 'User', repositories: { __typename?: 'RepositoryConnection', nodes?: Array<{ __typename?: 'Repository', id: string, name: string, description?: string | null, forkCount: number, stargazerCount: number, languages?: { __typename?: 'LanguageConnection', totalSize: number, totalCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean }, edges?: Array<{ __typename?: 'LanguageEdge', cursor: string, size: number, node: { __typename?: 'Language', id: string, name: string, color?: string | null } } | null> | null } | null } | null> | null } } };
+export type GetRepositoryLanguagesQuery = { __typename?: 'Query', viewer: { __typename?: 'User', repositories: { __typename?: 'RepositoryConnection', nodes?: Array<{ __typename?: 'Repository', id: string, name: string, description?: string | null, url: any, forkCount: number, stargazerCount: number, languages?: { __typename?: 'LanguageConnection', totalSize: number, totalCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean }, edges?: Array<{ __typename?: 'LanguageEdge', cursor: string, size: number, node: { __typename?: 'Language', id: string, name: string, color?: string | null } } | null> | null } | null } | null> | null } } };
 
 
 export const GetRepositoryLanguagesDocument = gql`
@@ -26037,6 +26037,7 @@ export const GetRepositoryLanguagesDocument = gql`
         id
         name
         description
+        url
         forkCount
         stargazerCount
         languages(first: $languagesFirst) {

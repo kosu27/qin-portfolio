@@ -7,9 +7,10 @@ export type Language = {
 export type Repository = {
   id: string;
   name: string;
-  description: string;
-  languages: Language[];
   totalSize: number;
+  description: string;
+  url: string;
   stargazerCount: number;
   forkCount: number;
+  languages: Language[];
 };

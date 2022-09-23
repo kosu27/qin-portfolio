@@ -7,6 +7,7 @@ export const repositoryLanguagesQuery = gql`query GetRepositoryLanguages($reposi
         id
         name
         description
+        url
         forkCount
         stargazerCount
         languages(first: $languagesFirst) {
@@ -29,4 +30,5 @@ export const repositoryLanguagesQuery = gql`query GetRepositoryLanguages($reposi
       }
     }
   }
-}`;
+}
+`;
