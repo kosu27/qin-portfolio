@@ -35,12 +35,13 @@ export const GithubLanguage: FC<Props> = ({ languages, repository }) => {
       />
       <Group spacing={0}>
         {languageParams.map((language) => {
+          const radius = 6;
           return (
             <Group key={language.name} spacing={6}>
               <div
                 style={{
-                  height: 6,
-                  width: 6,
+                  height: radius,
+                  width: radius,
                   borderRadius: "50%",
                   backgroundColor: language.color,
                 }}
