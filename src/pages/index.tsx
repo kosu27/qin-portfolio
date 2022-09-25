@@ -3,7 +3,6 @@ import { Layout } from "components/templates/Layout";
 import { Contents } from "components/Content/Contents";
 import { Blog } from "types/Blog";
 import { Portfolio } from "types/Portfolio";
-import { Github } from "types/Github";
 import { Twitter } from "types/Twitter";
 import { SWRConfig } from "swr";
 import { Blogs } from "components/Blog";
@@ -12,26 +11,34 @@ import { TwitterTweet } from "components/Twitter";
 import { GithubRepositories } from "components/Github";
 import { microCMSClient } from "lib/microCMS/client";
 import { fetchTweets } from "lib/twitter/client";
+import { ApolloProvider } from "@apollo/client";
+import { fetchRepositories, githubClient } from "lib/github/client";
+import { Repository } from "types/Repository";
+import { queryRepositories } from "utils/repositoriesQuery";
 
 type Props = {
   blogs: Blog[];
   portfolios: Portfolio[];
-  repositories: Github[];
+  repositories: Repository[];
   twitter: Twitter[];
 };
 
-const Home: NextPage<Props> = (props) => {
+const Home: NextPage<Props> = ({ blogs, portfolios, repositories, twitter }) => {
   return (
     <Layout withTitle>
       <Contents
-        blogs={<Blogs blogs={props.blogs} isAll={false} />}
-        portfolios={<Portfolios portfolios={props.portfolios} isAll={false} />}
+        blogs={<Blogs blogs={blogs} isAll={false} />}
+        portfolios={<Portfolios portfolios={portfolios} isAll={false} />}
         tweets={
-          <SWRConfig value={{ fallback: props.twitter }}>
+          <SWRConfig value={{ fallback: twitter }}>
             <TwitterTweet />
           </SWRConfig>
         }
-        repositories={<GithubRepositories repositories={repositories} />}
+        repositories={
+          <ApolloProvider client={githubClient}>
+            <GithubRepositories repositories={repositories} />
+          </ApolloProvider>
+        }
       />
     </Layout>
   );
@@ -56,10 +63,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const tweets = twitterResponse.data!;
 
+  const data = await fetchRepositories();
+  const repositories = queryRepositories(data);
+
   const props: Props = {
     blogs: blogData.contents,
     portfolios: portfolioData.contents,
-    repositories: [],
+    repositories: repositories,
     twitter: tweets,
   };
 
@@ -70,41 +80,3 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default Home;
-
-const repositories: Github[] = Array.from(new Array(30)).map((_, i) => ({
-  id: i + 1,
-  title: "lightsound/nexst-tailwind",
-  description: "Next.js starter template.",
-  star: 117,
-  fork: 18,
-  languages: [
-    {
-      name: "TypeScript",
-      value: 1500,
-    },
-    {
-      name: "JavaScript",
-      value: 1000,
-    },
-    {
-      name: "Ruby",
-      value: 1200,
-    },
-    {
-      name: "PHP",
-      value: 400,
-    },
-    {
-      name: "Go",
-      value: 100,
-    },
-    {
-      name: "Python",
-      value: 100,
-    },
-    {
-      name: "Other",
-      value: 100,
-    },
-  ],
-}));

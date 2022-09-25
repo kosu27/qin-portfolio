@@ -1,8 +1,7 @@
 import { Blog, BlogAnswer } from "types/Blog";
 import { Portfolio } from "types/Portfolio";
-import { Github, Languages } from "types/Github";
-import { Language } from "types/Language";
+import { Repository, Language } from "types/Repository";
 import { Twitter } from "types/Twitter";
 import { Image } from "types/Image";
 
-export type { Blog, Portfolio, Github, Language, Languages, Twitter, Image, BlogAnswer };
+export type { Blog, Portfolio, Repository, Language, Twitter, Image, BlogAnswer };
