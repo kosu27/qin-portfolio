@@ -4,7 +4,7 @@ import { repositoryLanguagesQuery } from "lib/github/query.graphql";
 
 export const githubClient = new ApolloClient({
   uri: "https://api.github.com/graphql",
-  headers: { authorization: `Bearer${process.env.NEXT_PUBLIC_PERSONAL_ACCESS_TOKEN}` },
+  headers: { authorization: `Bearer ${process.env.NEXT_PUBLIC_PERSONAL_ACCESS_TOKEN}` },
   cache: new InMemoryCache(),
 });
 
