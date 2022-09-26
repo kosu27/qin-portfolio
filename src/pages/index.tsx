@@ -13,17 +13,19 @@ import { microCMSClient } from "lib/microCMS/client";
 import { fetchTweets } from "lib/twitter/client";
 import { ApolloProvider } from "@apollo/client";
 import { fetchRepositories, githubClient } from "lib/github/client";
-import { Repository } from "types/Repository";
 import { queryRepositories } from "utils/repositoriesQuery";
+import { GetRepositoryLanguagesQuery } from "types/Github";
 
 type Props = {
   blogs: Blog[];
   portfolios: Portfolio[];
-  repositories: Repository[];
+  githubData: GetRepositoryLanguagesQuery;
   twitter: Twitter[];
 };
 
-const Home: NextPage<Props> = ({ blogs, portfolios, repositories, twitter }) => {
+const Home: NextPage<Props> = ({ blogs, portfolios, githubData, twitter }) => {
+  const githubUrl = githubData.viewer.url as string;
+  const repositories = queryRepositories(githubData);
   return (
     <Layout withTitle>
       <Contents
@@ -36,7 +38,7 @@ const Home: NextPage<Props> = ({ blogs, portfolios, repositories, twitter }) => 
         }
         repositories={
           <ApolloProvider client={githubClient}>
-            <GithubRepositories repositories={repositories} />
+            <GithubRepositories repositories={repositories} githubUrl={githubUrl} />
           </ApolloProvider>
         }
       />
@@ -63,13 +65,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const tweets = twitterResponse.data!;
 
-  const data = await fetchRepositories();
-  const repositories = queryRepositories(data);
+  const githubData = await fetchRepositories();
 
   const props: Props = {
     blogs: blogData.contents,
     portfolios: portfolioData.contents,
-    repositories: repositories,
+    githubData: githubData,
     twitter: tweets,
   };
 

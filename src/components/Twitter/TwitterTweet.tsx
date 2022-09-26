@@ -1,4 +1,4 @@
-import { Center, ScrollArea, Space, Stack } from "@mantine/core";
+import { Anchor, Center, ScrollArea, Space, Stack } from "@mantine/core";
 import axios from "axios";
 import { SegmentButton } from "components/Button";
 import { SegmentTitle } from "components/Title";
@@ -21,6 +21,8 @@ export const TwitterTweet: FC = () => {
   if (error) return <div>Failed to get data</div>;
   if (!data) return <div>Loading...</div>;
 
+  const twitterUrl = `https://twitter.com/${data[0].userId}`;
+
   return (
     <Stack spacing={0}>
       <SegmentTitle>Twitter</SegmentTitle>
@@ -33,9 +35,11 @@ export const TwitterTweet: FC = () => {
       </ScrollArea>
 
       <Space h={24} />
-      <Center mt={8}>
-        <SegmentButton display="View on Twitter" />
-      </Center>
+      <Anchor href={twitterUrl} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
+        <Center mt={8}>
+          <SegmentButton display="View on Twitter" />
+        </Center>
+      </Anchor>
     </Stack>
   );
 };
