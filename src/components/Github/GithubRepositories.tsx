@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { Center, ScrollArea, Stack } from "@mantine/core";
+import { Anchor, Center, ScrollArea, Stack } from "@mantine/core";
 import { SegmentButton } from "components/Button";
 import { GithubItem } from "components/Github/GithubItem";
 import { SegmentTitle } from "components/Title";
@@ -20,12 +20,8 @@ export const GithubRepositories: FC<Props> = ({ repositories }) => {
     variables: { repositoriesFirst: 10, languagesFirst: 10 },
   });
 
-  const items: Repository[] = [];
-  if (data) {
-    Array.prototype.push.apply(items, queryRepositories(data));
-  } else {
-    Array.prototype.push.apply(items, repositories);
-  }
+  const items: Repository[] = data ? queryRepositories(data) : repositories;
+  const githubUrl = data ? (data.viewer.url as string) : "";
 
   return (
     <Stack spacing={0}>
@@ -38,9 +34,16 @@ export const GithubRepositories: FC<Props> = ({ repositories }) => {
             ))}
           </Stack>
         </ScrollArea>
-        <Center mt={8}>
-          <SegmentButton display="View on Github" />
-        </Center>
+        <Anchor
+          href={githubUrl}
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <Center mt={8}>
+            <SegmentButton display="View on Github" />
+          </Center>
+        </Anchor>
       </Stack>
     </Stack>
   );
