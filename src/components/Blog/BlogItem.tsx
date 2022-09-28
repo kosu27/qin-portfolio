@@ -4,7 +4,6 @@ import { dateFormatted } from "lib/dayJs/day";
 import { FC } from "react";
 import { Blog } from "types/Blog";
 import { pagesPath } from "utils/$path";
-// import { htmlToText } from "utils/htmlTransform";
 
 type Props = {
   blog: Blog;
