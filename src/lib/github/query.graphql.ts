@@ -11,7 +11,7 @@ export const repositoryLanguagesQuery = gql`query GetRepositoryLanguages($reposi
         url
         forkCount
         stargazerCount
-        languages(first: $languagesFirst) {
+        languages(first: $languagesFirst, orderBy: {field: SIZE, direction: DESC}) {
           pageInfo {
             hasNextPage
             hasPreviousPage
