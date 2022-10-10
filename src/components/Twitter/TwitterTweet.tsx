@@ -3,7 +3,6 @@ import axios from "axios";
 import { SegmentButton } from "components/Button";
 import { SegmentTitle } from "components/Title";
 import { TwitterItem } from "components/Twitter/TwitterItem";
-import { useMediaQuery } from "lib/mantine";
 import { FC } from "react";
 import useSWR from "swr";
 import { Twitter } from "types/Twitter";
@@ -15,8 +14,11 @@ const twitterFetcher = async (key: string): Promise<Twitter[]> => {
   return res.data;
 };
 
-export const TwitterTweet: FC = () => {
-  const isDesktop = useMediaQuery("sm");
+type Props = {
+  scrollHeight: number;
+};
+
+export const TwitterTweet: FC<Props> = ({ scrollHeight }) => {
   const { data, error } = useSWR("tweets", twitterFetcher, {});
   if (error) return <div>Failed to get data</div>;
   if (!data) return <div>Loading...</div>;
@@ -26,7 +28,7 @@ export const TwitterTweet: FC = () => {
   return (
     <Stack spacing={0}>
       <SegmentTitle>Twitter</SegmentTitle>
-      <ScrollArea style={{ height: isDesktop ? 880 : 400 }}>
+      <ScrollArea style={{ height: scrollHeight }}>
         <Stack spacing={24}>
           {data.map((tweet) => (
             <TwitterItem key={tweet.id} twitter={tweet} />
