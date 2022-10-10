@@ -1,7 +1,5 @@
-import { Blog, BlogAnswer } from "types/Blog";
-import { Portfolio } from "types/Portfolio";
-import { Repository, Language } from "types/Repository";
-import { Twitter } from "types/Twitter";
-import { Image } from "types/Image";
-
-export type { Blog, Portfolio, Repository, Language, Twitter, Image, BlogAnswer };
+export type { Blog, BlogAnswer } from "types/Blog";
+export type { Portfolio } from "types/Portfolio";
+export type { Repository, Language } from "types/Repository";
+export type { Twitter } from "types/Twitter";
+export type { Image } from "types/Image";

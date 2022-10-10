@@ -4,7 +4,6 @@ import { SegmentButton } from "components/Button";
 import { GithubItem } from "components/Github/GithubItem";
 import { SegmentTitle } from "components/Title";
 import { repositoryLanguagesQuery } from "lib/github/query.graphql";
-import { useMediaQuery } from "lib/mantine";
 import { FC } from "react";
 import { GetRepositoryLanguagesQuery } from "types/Github";
 import { Repository } from "types/Repository";
@@ -13,10 +12,10 @@ import { queryRepositories } from "utils/repositoriesQuery";
 type Props = {
   repositories: Repository[];
   githubUrl: string;
+  scrollHeight: number;
 };
 
-export const GithubRepositories: FC<Props> = ({ repositories, githubUrl }) => {
-  const isDesktop = useMediaQuery("sm");
+export const GithubRepositories: FC<Props> = ({ repositories, githubUrl, scrollHeight }) => {
   const { data } = useQuery<GetRepositoryLanguagesQuery>(repositoryLanguagesQuery, {
     variables: { repositoriesFirst: 10, languagesFirst: 10 },
   });
@@ -27,7 +26,7 @@ export const GithubRepositories: FC<Props> = ({ repositories, githubUrl }) => {
     <Stack spacing={0}>
       <SegmentTitle>Github</SegmentTitle>
       <Stack spacing={24}>
-        <ScrollArea style={{ height: isDesktop ? 880 : 400 }} pr={24}>
+        <ScrollArea style={{ height: scrollHeight }} pr={24}>
           <Stack spacing={40}>
             {items.map((repository) => (
               <GithubItem key={repository.id} repository={repository} />
