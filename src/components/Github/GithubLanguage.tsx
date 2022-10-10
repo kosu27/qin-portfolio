@@ -18,7 +18,7 @@ export const GithubLanguage: FC<Props> = ({ languages, repository }) => {
   const theme = useMantineTheme();
   const textColor = useText();
   const total = repository.totalSize;
-  const languageParams: LanguageParams[] = languages.map((language: Language) => {
+  const languageParams = languages.map<LanguageParams>((language: Language) => {
     const percent = Math.floor((language.size / total) * 1000) / 10;
     const color = language.color;
 
