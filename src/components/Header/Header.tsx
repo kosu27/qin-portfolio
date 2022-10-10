@@ -9,17 +9,20 @@ import {
 } from "@mantine/core";
 import NextLink from "next/link";
 import { useDisclosure } from "@mantine/hooks";
-import { useMediaQuery, useText } from "lib/mantine";
 import { DarkModeButton } from "components/Button/DarkModeButton";
 import { FC } from "react";
 import { pagesPath } from "utils/$path";
+import { useMediaQuery } from "lib/mantine";
 
 export const Header: FC = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const isDesktop = useMediaQuery("md");
   const pX = isDesktop ? 224 : 16;
   const theme = useMantineTheme();
-  const textColor = useText();
+  const textColor = theme.colorScheme === "dark" ? theme.white : theme.colors.dark[7];
+  const headerColor = isDesktop ? textColor : theme.white;
+  const burgerColor = opened ? theme.white : textColor;
+  const burger = <Burger opened={opened} color={burgerColor} onClick={toggle} size="sm" />;
 
   const links = [
     {
@@ -45,6 +48,7 @@ export const Header: FC = () => {
       <Text
         size="sm"
         weight={700}
+        color={headerColor}
         style={{ borderRadius: "2px", cursor: "pointer" }}
         onClick={() => close()}
       >
@@ -52,10 +56,6 @@ export const Header: FC = () => {
       </Text>
     </NextLink>
   ));
-
-  const burger = (
-    <Burger opened={opened} color={opened ? theme.white : textColor} onClick={toggle} size="sm" />
-  );
 
   return (
     <>

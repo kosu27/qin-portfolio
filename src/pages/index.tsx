@@ -15,6 +15,7 @@ import { ApolloProvider } from "@apollo/client";
 import { fetchRepositories, githubClient } from "lib/github/client";
 import { queryRepositories } from "utils/repositoriesQuery";
 import { GetRepositoryLanguagesQuery } from "types/Github";
+import { useMediaQuery } from "lib/mantine";
 
 type Props = {
   blogs: Blog[];
@@ -26,6 +27,8 @@ type Props = {
 const Home: NextPage<Props> = ({ blogs, portfolios, githubData, twitter }) => {
   const githubUrl = githubData.viewer.url as string;
   const repositories = queryRepositories(githubData);
+  const isDesktop = useMediaQuery("sm");
+  const scrollHeight = isDesktop ? 880 : 400;
   return (
     <Layout withTitle>
       <Contents
@@ -33,12 +36,16 @@ const Home: NextPage<Props> = ({ blogs, portfolios, githubData, twitter }) => {
         portfolios={<Portfolios portfolios={portfolios} isAll={false} />}
         tweets={
           <SWRConfig value={{ fallback: twitter }}>
-            <TwitterTweet />
+            <TwitterTweet scrollHeight={scrollHeight} />
           </SWRConfig>
         }
         repositories={
           <ApolloProvider client={githubClient}>
-            <GithubRepositories repositories={repositories} githubUrl={githubUrl} />
+            <GithubRepositories
+              repositories={repositories}
+              githubUrl={githubUrl}
+              scrollHeight={scrollHeight}
+            />
           </ApolloProvider>
         }
       />
