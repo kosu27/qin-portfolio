@@ -1,5 +1,4 @@
 import { Group, Progress, Space, Stack, Text, useMantineTheme } from "@mantine/core";
-import { useText } from "lib/mantine";
 import { FC } from "react";
 import { Language, Repository } from "types/Repository";
 
@@ -16,7 +15,6 @@ type LanguageParams = {
 
 export const GithubLanguage: FC<Props> = ({ languages, repository }) => {
   const theme = useMantineTheme();
-  const textColor = useText();
   const total = repository.totalSize;
   const languageParams = languages.map<LanguageParams>((language: Language) => {
     const percent = Math.floor((language.size / total) * 1000) / 10;
@@ -46,7 +44,7 @@ export const GithubLanguage: FC<Props> = ({ languages, repository }) => {
                   backgroundColor: language.color,
                 }}
               />
-              <Text size={12} weight="bold" color={textColor}>
+              <Text size={12} weight="bold">
                 {language.name}
               </Text>
               <Text size={12} weight="bold" color={theme.colors.dark[2]}>
